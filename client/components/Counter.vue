@@ -3,8 +3,10 @@
     <div class="counter">
       <!-- {{ count }} -->
       {{ intvPoly }}
-      <br><br>
-      {{ intvHexes }}
+      <br /> <br />
+      <!-- {{ intvHexes }} -->
+      <br /> <br />
+      {{ wqStation }}
     </div>
   </div>
 </template>
@@ -20,6 +22,10 @@ export default {
 
     intvHexes() {
       return this.$store.state.intvHexes
+    },
+
+    wqStation() {
+      return this.$store.state.wqStation
     }
   },
 
@@ -27,13 +33,14 @@ export default {
 
     this.$store.dispatch('loadIntv')
     this.$store.dispatch('loadHexes')
+    this.$store.dispatch('getStation')
   },
 
   methods: {
 
     makeMap() {
 
-      
+
     }
   }
 }
@@ -42,6 +49,6 @@ export default {
 <style>
 
 .counter {
-  
+
 }
 </style>

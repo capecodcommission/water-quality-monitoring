@@ -8,10 +8,15 @@ const state = {
 
   count: 0,
   intvPoly: [],
-  intvHexes: []
+  intvHexes: [],
+  wqStation: []
 }
 
 const mutations = {
+
+  GET_STATION (state, station) {
+    state.wqStation = station
+  },
 
   LOAD_POLY (state, poly) {
 
@@ -25,6 +30,17 @@ const mutations = {
 }
 
 const actions = {
+
+  getStation ( {commit}, id ) {
+
+    $.getJSON("http://sql-connect.api.capecodcommission.org/api/getEmbayment/WMO36", function (result) {
+    // $.getJSON("http://sql-connect.api.capecodcommission.org/api/getEmbayment/ + $wqStationId", function (result) {
+
+      commit("GET_STATION", result)
+
+    })
+
+  },
 
   loadIntv ({commit}) {
 
