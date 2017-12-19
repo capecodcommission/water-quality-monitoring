@@ -5,9 +5,13 @@ import router from './router'
 import store from './store'
 import $ from 'jquery'
 window.$ = $
+
 import {ClientTable} from 'vue-tables-2';
 
 Vue.use(ClientTable);
+
+var plotly = require('plotly')("capecodcommission", "p9IkfYcPNC1SELCOpZDk")
+
 
 sync(store, router)
 

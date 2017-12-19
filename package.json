@@ -43,6 +43,7 @@
     "esri-loader": "^1.5.3",
     "jquery": "^3.2.1",
     "node-sass": "^4.7.2",
+    "plotly": "^1.0.6",
     "promise-polyfill": "^6.0.2",
     "sass-loader": "^6.0.6",
     "vue": "^2.2.0",

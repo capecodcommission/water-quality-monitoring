@@ -7,7 +7,8 @@ Vue.use(Vuex)
 const state = {
 
   embaymentNames: [],
-  wqStation: []
+  wqStation: [],
+  wqStationMock: [{x:[0,1,2], y:[3,2,1], type: 'bar'}]
 }
 
 const mutations = {

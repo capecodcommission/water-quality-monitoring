@@ -10,6 +10,7 @@
 export default {
 
   data() {
+    
     return {
 
       columns: ['date','salinity','disolvedoxygen','nitrogen','water_temp','precipitation','depth','nitrate_nitrite','ammonium','orthophosphate','chlorophyll','phaeophytin']
@@ -17,11 +18,11 @@ export default {
   },
 
   computed: {
+
     wqStation() {
 
       return this.$store.state.wqStation
     }
-    
   },
 
   components: {
