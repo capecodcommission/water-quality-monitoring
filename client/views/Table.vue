@@ -1,43 +1,43 @@
 <template>
 
-  <div class="row">
+  <div>
 
-  	<p>worked</p>
+    <div class = 'row'>
+
+    	<wqHeader></wqHeader>
+
+    </div>
+
+    <div class = 'row'>
+      
+      <clientTable></clientTable>
+
+    </div>
 
   </div>
+
 </template>
 
 <script>
-
+import wqHeader from '../components/Header'
+import clientTable from '../components/clientTable'
 
 export default {
   components: {
-    
+
+    wqHeader,
+    clientTable
   },
 
   mounted() {
 
-  
+    // Load station data using station id from route
+  	this.$store.dispatch('getStation', this.$route.params.id)
   }
 }
 </script>
 
 <style lang = 'scss'>
 
-	.esri-ui-bottom-left {
-	  bottom: 15% !important;
-	}
-
-	.esri-legend {
-	  background: #28536c;
-	  color: #f0ead6;
-	  border-radius: 25px;
-	  border: 5px solid grey;
-	}
-
-	#viewDiv {
-	  position: fixed !important;
-	  height: 100%;
-	  width: 100%;
-	}
+	
 </style>

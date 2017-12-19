@@ -74,7 +74,7 @@ export const createMap = function (loader) {
 
           var attributes = view.popup.viewModel.selectedFeature.attributes;
 
-          var url = 'http://sql-connect.api.capecodcommission.org/api/getEmbayment/' + attributes.Station
+          var url = 'http://sql-connect.api.capecodcommission.org/api/getStation/' + attributes.Station
 
           $.ajax(
             {
@@ -90,6 +90,36 @@ export const createMap = function (loader) {
 
               $('.esri-popup__content').append("<p id = 'nodata' class = 'text-danger'>No data available</p>")
             }
+          })
+        }
+      })
+
+      // On new dropdown selection, pass EMBAY_DISP to ZoomToSelection 
+      $('#embaySelect').on('change', function() {
+
+        var x = $(this).val().toString()
+
+        if (x === '0') {
+
+          embayments.definitionExpression = ''
+          
+          embayments.when(() => {
+
+            return embayments.queryExtent()
+          }).then((response) => {
+
+            view.goTo(response)
+          })
+        } else {
+
+          embayments.definitionExpression = "EMBAY_DISP = " + "'" + x + "'"
+
+          embayments.when(() => {
+
+            return embayments.queryExtent()
+          }).then((response) => {
+
+            view.goTo(response)
           })
         }
       })

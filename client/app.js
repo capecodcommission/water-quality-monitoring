@@ -5,6 +5,9 @@ import router from './router'
 import store from './store'
 import $ from 'jquery'
 window.$ = $
+import {ClientTable} from 'vue-tables-2';
+
+Vue.use(ClientTable);
 
 sync(store, router)
 

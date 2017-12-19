@@ -11,10 +11,10 @@
       </p>
       <p>Zoom to an embayment from the dropdown below</p>
     </h5>
-    <!-- <select id = 'embaySelect'>
-      <option value = '0'>Select an Embayment</option>
-      <option v-for = 'embayment in embayments.recordsets[0]' :value = 'embayment.EMBAYMENT_ID'>{{embayment.EMBAYMENT}}</option>
-    </select> -->
+    <select id = 'embaySelect'>
+      <option :value = '0'>Select an Embayment</option>
+      <option v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
+    </select>
   </div>
 </template>
 
@@ -23,13 +23,24 @@ import * as esriLoader from 'esri-loader'
 import { createMap } from '../components/esrimap'
 
 export default {
+
+  computed: {
+
+    // use embayment names to feed dropdown selection above
+    embaymentNames() {
+
+      return this.$store.state.embaymentNames
+    }
+  },
+
   components: {
     
   },
 
   mounted() {
 
-    
+    // load embayment names on page load
+    this.$store.dispatch('loadEmbaymentNames')
   },
 
   methods: {

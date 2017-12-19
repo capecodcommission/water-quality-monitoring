@@ -6,26 +6,19 @@ Vue.use(Vuex)
 
 const state = {
 
-  count: 0,
-  intvPoly: [],
-  intvHexes: [],
+  embaymentNames: [],
   wqStation: []
 }
 
 const mutations = {
 
-  GET_STATION (state, station) {
-    state.wqStation = station
+  LOAD_STATION (state, station) {
+    state.wqStation = station.recordsets[0]
   },
 
-  LOAD_POLY (state, poly) {
+  LOAD_EMBAYMENTNAMES (state, names) {
 
-    state.intvPoly = poly
-  },
-
-  LOAD_HEXES (state, hexes) {
-
-    state.intvHexes = hexes
+    state.embaymentNames = names.recordsets[0]
   }
 }
 
@@ -33,28 +26,18 @@ const actions = {
 
   getStation ( {commit}, id ) {
 
-    $.getJSON("http://sql-connect.api.capecodcommission.org/api/getEmbayment/WMO36", function (result) {
-    // $.getJSON("http://sql-connect.api.capecodcommission.org/api/getEmbayment/ + $wqStationId", function (result) {
+    $.getJSON("http://sql-connect.api.capecodcommission.org/api/getStation/" + id, function (result) {
 
-      commit("GET_STATION", result)
-
+      commit("LOAD_STATION", result)
     })
 
   },
 
-  loadIntv ({commit}) {
+  loadEmbaymentNames ({commit}) {
 
-    $.getJSON("https://opendata.arcgis.com/datasets/2f919d05a2a1447db4ebcaf80f553288_1.geojson", function (result) {
+    $.getJSON("http://sql-connect.api.capecodcommission.org/api/getEmbayments", function (result) {
 
-      commit("LOAD_POLY", result)
-    })
-  },
-
-  loadHexes ({commit}) {
-
-    $.getJSON("http://gis-cccommission.opendata.arcgis.com/datasets/49c80ec6e88544b5a9d6775670a70067_0.geojson", function (result) {
-
-      commit("LOAD_HEXES", result)
+      commit("LOAD_EMBAYMENTNAMES", result)
     })
   }
 }
