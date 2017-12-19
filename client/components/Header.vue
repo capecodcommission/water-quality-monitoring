@@ -13,7 +13,7 @@
       <div class = 'btn-group btn-group-justified' role="group">
 
         <a href="#" class="btn btn-primary">Nutrient Table</a>
-        <a href="#" class="btn btn-primary">Nutrient Charts</a>
+        <a @click = "goTo('charts')" href="#" class="btn btn-primary">Nutrient Charts</a>
       </div>
     </div>
 
