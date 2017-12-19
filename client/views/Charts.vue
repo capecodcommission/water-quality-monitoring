@@ -1,10 +1,26 @@
 <template>
-  <div id = "container">
-    <div id = "charts"></div>
+
+  <div>
+
+    <div class = 'row'>
+
+      <wqHeader></wqHeader>
+
+    </div>
+
+    <div class = 'row'>
+      
+      <div id = 'charts'></div>
+
+    </div>
+
   </div>
+
 </template>
 
 <script>
+
+import wqHeader from '../components/Header'
 
 import plotly from 'plotly'
 
@@ -12,6 +28,11 @@ import plotly from 'plotly'
 // PLOTYLY U-NAME | capecodcommission
 
 export default {
+
+  components: {
+
+    wqHeader
+  },
 
   data () {
     return {
@@ -26,7 +47,7 @@ export default {
   },
 
   mounted () {
-    this.$store.dispatch('something')
+    // this.$store.dispatch('something')
   },
 
   methods: {

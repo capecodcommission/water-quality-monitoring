@@ -12,7 +12,7 @@
 
       <div class = 'btn-group btn-group-justified' role="group">
 
-        <a href="#" class="btn btn-primary">Nutrient Table</a>
+        <a @click = "goTo('table')" href="#" class="btn btn-primary">Nutrient Table</a>
         <a @click = "goTo('charts')" href="#" class="btn btn-primary">Nutrient Charts</a>
       </div>
     </div>
@@ -52,7 +52,15 @@ export default {
 
     goTo(x) {
 
-      router.push({name: x})
+      var y = this.$route.params.id
+
+      if (x === 'home') {
+
+        router.push({name: x})
+      } else {
+
+        router.push({name: x, params: {id: y}})
+      }
     }
   }
 }

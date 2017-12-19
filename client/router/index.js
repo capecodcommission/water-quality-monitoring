@@ -7,7 +7,7 @@ import Charts from '../views/Charts'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash',
+  mode: 'history',
   routes: [
     {
       name: 'home',
@@ -16,12 +16,12 @@ export default new Router({
     },
     {
     	name: 'table',
-      path: '/Station/:id',
+      path: '/Station/:id/Table',
       component: Table
     },
     {
       name: 'charts',
-      path: '/charts',
+      path: '/Station/:id/Charts',
       component: Charts
     }
   ]
