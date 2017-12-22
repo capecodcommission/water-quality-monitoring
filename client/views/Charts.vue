@@ -1,19 +1,13 @@
 <template>
 
   <div>
-
     <div class = 'row'>
-
       <wqHeader></wqHeader>
-
     </div>
 
     <div class = 'row'>
-      
-      <div id = 'charts'></div>
-
+      <div id = 'chart'></div>
     </div>
-
   </div>
 
 </template>
@@ -22,15 +16,12 @@
 
 import wqHeader from '../components/Header'
 
-import plotly from 'plotly'
+var plotly = require('plotly')("capecodcommission", "p9IkfYcPNC1SELCOpZDk")
 
-// PLOTLY API KEY | p9IkfYcPNC1SELCOpZDk
-// PLOTYLY U-NAME | capecodcommission
 
 export default {
 
   components: {
-
     wqHeader
   },
 
@@ -41,39 +32,35 @@ export default {
   },
 
   computed: {
-    // wQData () {
-    //   return this.$store.state.wqStation
-    // }
+
   },
 
   mounted () {
-    // this.$store.dispatch('something')
+    this.makeChart()
+    console.log('test')
   },
 
   methods: {
 
-    wqStation () {
-      return this.$store.state.wqStation
+    returnWqStationMock () {
+      return this.$store.state.wqStationMock
     },
 
-    loadWqStationData () {
+    makeChart () {
 
-      var data = [{x:[0,1,2], y:[3,2,1], type: 'bar'}];
+      var data = this.$store.state.wqStationMock;
+      console.log(data)
       var layout = {fileopt : "overwrite", filename : "simple-node-example"};
 
-      plotly.plot(data, layout, function (err, msg) {
-        if (err) return console.log(err);
-        console.log(msg);
-      });
-
-    },
+      var chart = document.getElementById('chart');
+      Plotly.newPlot('chart', data);
+    }
 
 },
 
   watch: {
-
-    wqStation: function(x) {
-      console.log('noahexes logged: ', x)
+    wqStationMock: function(x) {
+      console.log('data: ', x)
     }
   }
 }
@@ -81,8 +68,4 @@ export default {
 </script>
 
 <style>
-#interventionButton {
-  z-index: 2;
-  position: absolute;
-}
 </style>

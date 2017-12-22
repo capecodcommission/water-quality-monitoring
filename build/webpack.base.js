@@ -60,6 +60,10 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: 'raw-loader'
+      },
+      {
+        test: /\.js$/,
+        loader: 'ify-loader'
       }
     ]
   },
