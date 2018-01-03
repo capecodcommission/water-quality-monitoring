@@ -4,7 +4,7 @@
 
 # Current Development
 
-> mario-working branch:
+> mario-working branch: Adding verbose comments to existing components
 
 > shawn-working branch: replicating plotly charts & pulling in different wq data to display in each as was done in vue1 app.
 
