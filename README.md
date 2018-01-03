@@ -2,6 +2,12 @@
 
 > This tool allows users to visualize Cape Cod Embayment water quality over time
 
+# Current Development
+
+> mario-working branch:
+
+> shawn-working branch: replicating plotly charts & pulling in different wq data to display in each as was done in vue1 app.
+
 ## Modules
 
 > [VueJS](https://vuejs.org/), [Vuex](https://github.com/vuejs/vuex), [Vue-Router](https://github.com/vuejs/vue-router), [ArcGIS API](https://developers.arcgis.com/javascript/3/), [Google Charts API](https://developers.google.com/chart/)
