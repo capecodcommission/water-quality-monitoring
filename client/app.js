@@ -10,8 +10,6 @@ import {ClientTable} from 'vue-tables-2';
 
 Vue.use(ClientTable);
 
-// var plotly = require('plotly')("capecodcommission", "AzpU2sNELWO5ePF7rkNi")
-
 
 sync(store, router)
 

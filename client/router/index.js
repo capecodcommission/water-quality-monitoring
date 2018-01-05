@@ -9,16 +9,22 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
+
+    // Default route
     {
       name: 'home',
       path: '/',
       component: Home
     },
+
+    // Table component with station id parameter
     {
     	name: 'table',
       path: '/Station/:id/Table',
       component: Table
     },
+
+    // Chart component with station id parameter
     {
       name: 'charts',
       path: '/Station/:id/Charts',

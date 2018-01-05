@@ -1,6 +1,10 @@
 import router from '../router'
+
 export const createMap = function (loader) {
+
+  // Attach to esriloader module
   const esriLoader = loader
+
   esriLoader.dojoRequire(
     [
       "esri/Map",
@@ -30,6 +34,7 @@ export const createMap = function (loader) {
         basemap: "topo"
       });
 
+      // Default view centered on Barnstable
       var view = new MapView({
         container: "viewDiv",  // Reference to the DOM node that will contain the view
         map: map,
@@ -37,6 +42,7 @@ export const createMap = function (loader) {
         center: [-70.303634, 41.701660]
       });
 
+      // Embayment featurelayer containing polygons
       var embayments = new FeatureLayer({
         url: "http://gis-services.capecodcommission.org/arcgis/rest/services/wMVP/WaterQualityMonitoringStations/MapServer/1",
         outFields: ['*'],
@@ -46,12 +52,14 @@ export const createMap = function (loader) {
         }
       });
 
+      // Action object contained within infotemplate for each station point
       var viewStation = {
         title: "View Station",
         id: "view-station",
         className: "btn btn-primary"
       };
 
+      // Infotemplate for each station point, all properties shown
       var stationTemplate = {
 
         title: "{Station} {Embayment}",
@@ -59,15 +67,19 @@ export const createMap = function (loader) {
         actions: [viewStation]
       };
 
+      // Station featurelayer containing points
       var stations = new FeatureLayer({
         url: "http://gis-services.capecodcommission.org/arcgis/rest/services/wMVP/WaterQualityMonitoringStations/MapServer/0",
         outFields: ['*'],
         popupTemplate: stationTemplate
       })
 
+      // Add featurelayers to map
       map.add(embayments)
       map.add(stations)
 
+      // On click of infotemplate action, eg. view-station, get station data
+      // If data exists, continue to next page with station id, else show no-data error
       view.popup.on('trigger-action', function(event) {
 
         if (event.action.id === 'view-station') {
@@ -94,7 +106,8 @@ export const createMap = function (loader) {
         }
       })
 
-      // On new dropdown selection, pass EMBAY_DISP to ZoomToSelection 
+      // Zoom to selected geography on dropdown selection
+      // If default selection, reset map zoom, else zoom to selected area
       $('#embaySelect').on('change', function() {
 
         var x = $(this).val().toString()

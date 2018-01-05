@@ -28,6 +28,7 @@ export default {
 
   computed: {
 
+    // Show station id passed from route
     stationId() {
 
       return this.$route.params.id
@@ -50,6 +51,7 @@ export default {
       window.location.href = 'http://2014.watershedmvp.org/waterqualitymonitoring/Content/Files/BlankTemplate.xlsx'
     },
 
+    // Navigate to a particular page, passing the station id if necessary
     goTo(x) {
 
       var y = this.$route.params.id
