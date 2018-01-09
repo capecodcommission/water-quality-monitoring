@@ -13,7 +13,7 @@
       <div id = 'nitrogenChart'></div>
       <div id = 'orthophosphateChart'></div>
       <div id = 'phaeophytinChart'></div>
-      <div id = 'precipitationChart'></div>
+      <!-- <div id = 'precipitationChart'></div> -->
       <div id = 'salinityChart'></div>
       <div id = 'waterTemperatureChart'></div>
     </div>
@@ -66,7 +66,7 @@ export default {
       const nitrogenValues = [];
       const orthophosphateValues = [];
       const phaeophytinValues = [];
-      const precipitationValues = [];
+      // const precipitationValues = [];
       const salinityValues = [];
       const waterTemperatureValues =[];
 
@@ -74,16 +74,36 @@ export default {
       var pushThings = wqStationData.map(function(elem, i, wqStationData) {
         dates.push(elem.date);
         depths.push(elem.depth);
-        ammoniumValues.push(Math.round(elem.ammonium * 100)/100);
-        cholorophyllValues.push(Math.round(elem.chlorophyll * 100)/100);
-        dissolvedOxygenValues.push(Math.round(elem.disolvedoxygen * 100)/100);
-        nitrateNitriteValues.push(Math.round(elem.nitrate_nitrite * 100)/100);
-        nitrogenValues.push(Math.round(elem.nitrogen * 100)/100);
-        orthophosphateValues.push(Math.round(elem.orthophosphate * 100)/100);
-        phaeophytinValues.push(Math.round(elem.phaeophytin * 100)/100);
-        precipitationValues.push(Math.round(elem.precipitation * 100)/100);
-        salinityValues.push(Math.round(elem.salinity * 100)/100);
-        waterTemperatureValues.push(Math.round(elem.water_temp * 100)/100);
+        if (elem.ammonium !== null) {
+          ammoniumValues.push(Math.round(elem.ammonium * 100)/100)
+        };
+        if (elem.chlorophyll !== null) {
+          cholorophyllValues.push(Math.round(elem.chlorophyll * 100)/100)
+        };
+        if (elem.disolvedoxygen !== null) {
+          dissolvedOxygenValues.push(Math.round(elem.disolvedoxygen * 100)/100)
+        };
+        if (elem.nitrate_nitrite !== null) {
+          nitrateNitriteValues.push(Math.round(elem.nitrate_nitrite * 100)/100)
+        };
+        if (elem.nitrate_nitrite !== null) {
+          nitrogenValues.push(Math.round(elem.nitrogen * 100)/100)
+        };
+        if (elem.orthophosphate !== null) {
+          orthophosphateValues.push(Math.round(elem.orthophosphate * 100)/100)
+        };
+        if (elem.phaeophytin !== null) {
+          phaeophytinValues.push(Math.round(elem.phaeophytin * 100)/100)
+        };
+        // if (elem.precipitation !== null) {
+        //   precipitationValues.push(Math.round(elem.precipitation * 100)/100)
+        // };
+        if (elem.salinity !== null) {
+          salinityValues.push(Math.round(elem.salinity * 100)/100)
+        };
+        if (elem.water_temp !== null) {
+          waterTemperatureValues.push(Math.round(elem.water_temp * 100)/100)
+        };
       });
 
       // SET UP WATER QUALITY MEASURABLES DATA FILLING WITH NECESSARY PLOTLY PARAMETERS
@@ -150,14 +170,14 @@ export default {
         name: 'Phaeophytin (μg/L)'
       };
 
-      var precipitation = {
-        x: dates,
-        y: precipitationValues,
-        line: {color: '#7f7f7f'},
-        type: 'scatter',
-        mode: 'markers',
-        name: 'Precipitation (in)'
-      };
+      // var precipitation = {
+      //   x: dates,
+      //   y: precipitationValues,
+      //   line: {color: '#7f7f7f'},
+      //   type: 'scatter',
+      //   mode: 'markers',
+      //   name: 'Precipitation (in)'
+      // };
 
       var salinity = {
         x: dates,
@@ -178,7 +198,7 @@ export default {
       };
 
       // SET UP DATA ARRAYS TO FEED INDIVIDUAL CHARTS
-      var allWqMeasurablesData = [ammonium, chlorophyll, dissolvedoxygen, nitrateNitrite, nitrogen, orthophosphate, phaeophytin, precipitation, salinity, waterTemperature];
+      var allWqMeasurablesData = [ammonium, chlorophyll, dissolvedoxygen, nitrateNitrite, nitrogen, orthophosphate, phaeophytin, salinity, waterTemperature];
       var ammoniumData = [ammonium];
       var chlorophyllData = [chlorophyll];
       var dissolvedoxygenData = [dissolvedoxygen];
@@ -186,7 +206,7 @@ export default {
       var nitrogenData = [nitrogen];
       var orthophosphateData = [orthophosphate];
       var phaeophytinData = [phaeophytin];
-      var precipitationData = [precipitation];
+      // var precipitationData = [precipitation];
       var salinityData = [salinity];
       var waterTemperatureData = [waterTemperature];
 
@@ -315,21 +335,21 @@ export default {
       };
 
       // PRECIPITATION CHART LAYOUT
-      var precipitationChartLayout = {
-        title: 'Precipitation (in)',
-        xaxis: {
-          autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
-          type: 'date'
-        },
-        yaxis: {
-          autorange: true,
-          range: [Math.min(precipitationValues), Math.max(precipitationValues)],
-          type: 'linear'
-        },
-        hovermode:'closest'
-      };
+      // var precipitationChartLayout = {
+      //   title: 'Precipitation (in)',
+      //   xaxis: {
+      //     autorange: true,
+      //     range: ['Math.min(dates)', 'Math.max(dates)'],
+      //     rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+      //     type: 'date'
+      //   },
+      //   yaxis: {
+      //     autorange: true,
+      //     range: [Math.min(precipitationValues), Math.max(precipitationValues)],
+      //     type: 'linear'
+      //   },
+      //   hovermode:'closest'
+      // };
 
       // SALINITY CHART LAYOUT
       var salinityChartLayout = {
@@ -392,8 +412,8 @@ export default {
       var phaeophytinChart = document.getElementById('phaeophytinChart');
       Plotly.newPlot('phaeophytinChart', phaeophytinData, phaeophytinChartLayout);
 
-      var precipitationChart = document.getElementById('precipitationChart');
-      Plotly.newPlot('precipitationChart', precipitationData, precipitationChartLayout);
+      // var precipitationChart = document.getElementById('precipitationChart');
+      // Plotly.newPlot('precipitationChart', precipitationData, precipitationChartLayout);
 
       var salinityChart = document.getElementById('salinityChart');
       Plotly.newPlot('salinityChart', salinityData, salinityChartLayout);
@@ -410,9 +430,9 @@ export default {
       const dragLayerNitrogen = document.getElementsByClassName('nsewdrag')[5];
       const dragLayerOrthophosphate = document.getElementsByClassName('nsewdrag')[6];
       const dragLayerPhaeophytin = document.getElementsByClassName('nsewdrag')[7];
-      const dragLayerPrecipitation = document.getElementsByClassName('nsewdrag')[8];
-      const dragLayerSalinity = document.getElementsByClassName('nsewdrag')[9];
-      const dragLayerWaterTemperature = document.getElementsByClassName('nsewdrag')[10];
+      // const dragLayerPrecipitation = document.getElementsByClassName('nsewdrag')[8];
+      const dragLayerSalinity = document.getElementsByClassName('nsewdrag')[8];
+      const dragLayerWaterTemperature = document.getElementsByClassName('nsewdrag')[9];
 
       // HANDLE POINTER CURSOR ON/OFF FOR ALL CHARTS
       allWqMeasurablesChart.on('plotly_hover', function(allWqMeasurablesData){
@@ -479,13 +499,13 @@ export default {
         dragLayerPhaeophytin.style.cursor = ''
       });
 
-      precipitationChart.on('plotly_hover', function(precipitationData){
-        dragLayerPrecipitation.style.cursor = 'pointer'
-      });
+      // precipitationChart.on('plotly_hover', function(precipitationData){
+      //   dragLayerPrecipitation.style.cursor = 'pointer'
+      // });
 
-      precipitationChart.on('plotly_unhover', function(precipitationData){
-        dragLayerPrecipitation.style.cursor = ''
-      });
+      // precipitationChart.on('plotly_unhover', function(precipitationData){
+      //   dragLayerPrecipitation.style.cursor = ''
+      // });
 
       salinityChart.on('plotly_hover', function(salinityData){
         dragLayerSalinity.style.cursor = 'pointer'

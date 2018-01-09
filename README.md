@@ -6,7 +6,8 @@
 
 > mario-working branch: Adding verbose comments to existing components
 
-> shawn-working branch: ready for review
+> shawn-working branch: removed precipitation logic and added logic to dismiss all null ammoniumValues
+> TODO: format chart styles as discussed
 
 ## Modules
 
