@@ -6,8 +6,8 @@
 
 > mario-working branch: Adding verbose comments to existing components
 
-> shawn-working branch: removed precipitation logic and added logic to dismiss all null ammoniumValues
-> TODO: format chart styles as discussed
+> shawn-working branch: in 'Charts.vue' added grays to background of charts, removed unnecessary range property/values, added background & border color to range sliders
+> TODO: change marker pop-up text color to be uniformly black or white, adjust chart width to remove horizontal scrolling need
 
 ## Modules
 

@@ -50,6 +50,8 @@ export default {
 
   methods: {
 
+    // TODO | WISHLIST | ADD PRELOADER > SOMETHING LIKE: https://codepen.io/MathiasNielsen/pen/jrBEAB
+
     makeCharts () {
 
       // RETRIEVE 'wqStation' DATA & SET IT TO 'wqStationData'
@@ -113,7 +115,7 @@ export default {
         line: {color: '#1F77B4'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Ammonium (mg/L)'
+        name: 'Ammonium (μm)'
       };
 
       var chlorophyll = {
@@ -122,7 +124,7 @@ export default {
         line: {color: '#FF7F0E'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Chlorophyll (μg/L)'
+        name: 'Chlorophyll (μm)'
       };
 
       var dissolvedoxygen = {
@@ -140,7 +142,7 @@ export default {
         line: {color: '#d62728'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Nitrate Nitrite (mg/L)'
+        name: 'Nitrate Nitrite (μm)'
       };
 
       var nitrogen = {
@@ -149,7 +151,7 @@ export default {
         line: {color: '#9467bd'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Nitrogen (mg/L)'
+        name: 'Nitrogen (μm)'
       };
 
       var orthophosphate = {
@@ -158,7 +160,7 @@ export default {
         line: {color: '#8c564b'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Orthophosphate (mg/L)'
+        name: 'Orthophosphate (μm)'
       };
 
       var phaeophytin = {
@@ -212,38 +214,45 @@ export default {
 
       // ALL WATER QUALITY MEASURABLES CHART LAYOUT
       var allWqMeasurablesChartLayout = {
-        title: 'All Water Quality Measurables'
+        title: 'All Water Quality Measurables',
+        paper_bgcolor: '#dedee6'
       };
 
       // AMMONIA CHART LAYOUT
       var ammoniumChartLayout = {
-        title: 'Ammonium (mg/L)',
+        title: 'Ammonium (μm)',
+        paper_bgcolor: '#c3c3c6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#d2e3f0',
+            bordercolor: '#1F77B4',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: ['Math.min(ammoniumValues)', 'Math.max(ammoniumValues)'],
           type: 'linear'
         },
-        hovermode:'closest'
+        hovermode:'closest',
       };
 
       // CHLOROPHYLL CHART LAYOUT
       var chlorophyllChartLayout = {
-        title: 'Chlorophyll (μg/L)',
+        title: 'Chlorophyll (μm)',
+        paper_bgcolor: '#dedee6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#ffe5ce',
+            bordercolor: '#FF7F0E',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(cholorophyllValues), Math.max(cholorophyllValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -252,15 +261,18 @@ export default {
       // D.O. CHART LAYOUT
       var dissolvedoxygenChartLayout = {
         title: 'Dissolved Oxygen (mg/L)',
+        paper_bgcolor: '#c3c3c6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#d4ecd4',
+            bordercolor: '#2CA02C',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(dissolvedOxygenValues), Math.max(dissolvedOxygenValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -268,16 +280,19 @@ export default {
 
       // NITRATE NITRITE CHART LAYOUT
       var nitrateNitriteChartLayout = {
-        title: 'Nitrate Nitrite (mg/L)',
+        title: 'Nitrate Nitrite (μm)',
+        paper_bgcolor: '#dedee6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#f6d3d4',
+            bordercolor: '#d62728',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(nitrateNitriteValues), Math.max(nitrateNitriteValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -285,16 +300,19 @@ export default {
 
       // NITROGEN CHART LAYOUT
       var nitrogenChartLayout = {
-        title: 'Nitrogen (mg/L)',
+        title: 'Nitrogen (μm)',
+        paper_bgcolor: '#c3c3c6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#e9e0f1',
+            bordercolor: '#9467bd',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(nitrogenValues), Math.max(nitrogenValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -302,16 +320,19 @@ export default {
 
       // ORTHOPHOSPHATE CHART LAYOUT
       var orthophosphateChartLayout = {
-        title: 'Orthophosphate (mg/L)',
+        title: 'Orthophosphate (μm)',
+        paper_bgcolor: '#dedee6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#e8dddb',
+            bordercolor: '#8c564b',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(orthophosphateValues), Math.max(orthophosphateValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -320,15 +341,18 @@ export default {
       // PHAEOPHYTIN CHART LAYOUT
       var phaeophytinChartLayout = {
         title: 'Phaeophytin (μg/L)',
+        paper_bgcolor: '#c3c3c6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#f9e3f2',
+            bordercolor: '#e377c2',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(phaeophytinValues), Math.max(phaeophytinValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -339,13 +363,15 @@ export default {
       //   title: 'Precipitation (in)',
       //   xaxis: {
       //     autorange: true,
-      //     range: ['Math.min(dates)', 'Math.max(dates)'],
-      //     rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+      //     rangeslider: {
+      //      bgcolor: '#f9e3f2',
+      //      bordercolor: '#e377c2',
+      //      borderwidth: '1'
+      //     },
       //     type: 'date'
       //   },
       //   yaxis: {
       //     autorange: true,
-      //     range: [Math.min(precipitationValues), Math.max(precipitationValues)],
       //     type: 'linear'
       //   },
       //   hovermode:'closest'
@@ -354,15 +380,18 @@ export default {
       // SALINITY CHART LAYOUT
       var salinityChartLayout = {
         title: 'Salinity (ppt)',
+        paper_bgcolor: '#dedee6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bordercolor: '#bcbd22',
+            bgcolor: '#f1f1d2',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(salinityValues), Math.max(salinityValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -371,15 +400,18 @@ export default {
       // ORTHOPHOSPHATE CHART LAYOUT
       var waterTemperatureChartLayout = {
         title: 'Water Temperature (°C)',
+        paper_bgcolor: '#c3c3c6',
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bordercolor: '#17BECF',
+            bgcolor: '#d0f2f5',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(waterTemperatureValues), Math.max(waterTemperatureValues)],
           type: 'linear'
         },
         hovermode:'closest'
