@@ -6,8 +6,8 @@
 
 > mario-working branch: Adding verbose comments to existing components
 
-> shawn-working branch: adjusted the width of the charts to remove horizontal scrolling need
-> TODO: change marker pop-up text color to be uniformly black or white
+> shawn-working branch: changed marker pop-up text color to be uniformly light gray
+> Ready for review
 
 ## Modules
 

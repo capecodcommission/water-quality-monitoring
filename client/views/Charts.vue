@@ -217,6 +217,11 @@ export default {
         title: 'All Water Quality Measurables',
         paper_bgcolor: '#dedee6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        }
       };
 
       // AMMONIA CHART LAYOUT
@@ -224,6 +229,11 @@ export default {
         title: 'Ammonium (μm)',
         paper_bgcolor: '#c3c3c6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -245,6 +255,11 @@ export default {
         title: 'Chlorophyll (μm)',
         paper_bgcolor: '#dedee6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -266,6 +281,11 @@ export default {
         title: 'Dissolved Oxygen (mg/L)',
         paper_bgcolor: '#c3c3c6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -287,6 +307,11 @@ export default {
         title: 'Nitrate Nitrite (μm)',
         paper_bgcolor: '#dedee6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -308,6 +333,11 @@ export default {
         title: 'Nitrogen (μm)',
         paper_bgcolor: '#c3c3c6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -329,6 +359,11 @@ export default {
         title: 'Orthophosphate (μm)',
         paper_bgcolor: '#dedee6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -350,6 +385,11 @@ export default {
         title: 'Phaeophytin (μg/L)',
         paper_bgcolor: '#c3c3c6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -370,6 +410,11 @@ export default {
       // var precipitationChartLayout = {
       //   title: 'Precipitation (in)',
       //   autosize: 'true',
+      //   hoverlabel: {
+      //    font: {
+      //      color: '#e5e5e5'
+      //    }
+      //   },
       //   xaxis: {
       //     autorange: true,
       //     rangeslider: {
@@ -391,6 +436,11 @@ export default {
         title: 'Salinity (ppt)',
         paper_bgcolor: '#dedee6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -412,6 +462,11 @@ export default {
         title: 'Water Temperature (°C)',
         paper_bgcolor: '#c3c3c6',
         autosize: 'true',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
           rangeslider: {
