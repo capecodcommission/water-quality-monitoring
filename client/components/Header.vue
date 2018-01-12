@@ -36,12 +36,12 @@ export default {
   },
 
   components: {
-    
+
   },
 
   mounted() {
 
-    
+
   },
 
   methods: {

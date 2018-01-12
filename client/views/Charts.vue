@@ -4,7 +4,7 @@
       <wqHeader></wqHeader>
     </div>
 
-    <div class = 'row'>
+    <div class = 'row' id = 'chartsContainer'>
       <div id = 'allWqMeasurablesChart'></div>
       <div id = 'ammoniaChart'></div>
       <div id = 'chlorophyllChart'></div>
@@ -215,13 +215,15 @@ export default {
       // ALL WATER QUALITY MEASURABLES CHART LAYOUT
       var allWqMeasurablesChartLayout = {
         title: 'All Water Quality Measurables',
-        paper_bgcolor: '#dedee6'
+        paper_bgcolor: '#dedee6',
+        autosize: 'true',
       };
 
       // AMMONIA CHART LAYOUT
       var ammoniumChartLayout = {
         title: 'Ammonium (μm)',
         paper_bgcolor: '#c3c3c6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -242,6 +244,7 @@ export default {
       var chlorophyllChartLayout = {
         title: 'Chlorophyll (μm)',
         paper_bgcolor: '#dedee6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -262,6 +265,7 @@ export default {
       var dissolvedoxygenChartLayout = {
         title: 'Dissolved Oxygen (mg/L)',
         paper_bgcolor: '#c3c3c6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -282,6 +286,7 @@ export default {
       var nitrateNitriteChartLayout = {
         title: 'Nitrate Nitrite (μm)',
         paper_bgcolor: '#dedee6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -302,6 +307,7 @@ export default {
       var nitrogenChartLayout = {
         title: 'Nitrogen (μm)',
         paper_bgcolor: '#c3c3c6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -322,6 +328,7 @@ export default {
       var orthophosphateChartLayout = {
         title: 'Orthophosphate (μm)',
         paper_bgcolor: '#dedee6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -342,6 +349,7 @@ export default {
       var phaeophytinChartLayout = {
         title: 'Phaeophytin (μg/L)',
         paper_bgcolor: '#c3c3c6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -361,6 +369,7 @@ export default {
       // PRECIPITATION CHART LAYOUT
       // var precipitationChartLayout = {
       //   title: 'Precipitation (in)',
+      //   autosize: 'true',
       //   xaxis: {
       //     autorange: true,
       //     rangeslider: {
@@ -381,6 +390,7 @@ export default {
       var salinityChartLayout = {
         title: 'Salinity (ppt)',
         paper_bgcolor: '#dedee6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -401,6 +411,7 @@ export default {
       var waterTemperatureChartLayout = {
         title: 'Water Temperature (°C)',
         paper_bgcolor: '#c3c3c6',
+        autosize: 'true',
         xaxis: {
           autorange: true,
           rangeslider: {
@@ -417,41 +428,47 @@ export default {
         hovermode:'closest'
       };
 
+      // RESOURCE
       // PLOTLY TIME SERIES https://plot.ly/javascript/time-series/
+
+      // CONFIGURE THE PLOTLY MODE BAR (TOP RIGHT ON HOVER)
+      var configureModeBar = { modeBarButtonsToRemove: ['sendDataToCloud', 'lasso2d'], displaylogo: false, showTips: true };
 
       // SET UP CHARTS FEEDING IN DIV, DATA & LAYOUT FROM ABOVE
       var allWqMeasurablesChart = document.getElementById('allWqMeasurablesChart');
-      Plotly.newPlot('allWqMeasurablesChart', allWqMeasurablesData, allWqMeasurablesChartLayout);
+      Plotly.newPlot('allWqMeasurablesChart', allWqMeasurablesData, allWqMeasurablesChartLayout, configureModeBar);
+
+      document.querySelector('[data-title="Reset axes"]').click();
 
       var ammoniaChart = document.getElementById('ammoniaChart');
-      Plotly.newPlot('ammoniaChart', ammoniumData, ammoniumChartLayout);
+      Plotly.newPlot('ammoniaChart', ammoniumData, ammoniumChartLayout, configureModeBar);
 
       var chlorophyllChart = document.getElementById('chlorophyllChart');
-      Plotly.newPlot('chlorophyllChart', chlorophyllData, chlorophyllChartLayout);
+      Plotly.newPlot('chlorophyllChart', chlorophyllData, chlorophyllChartLayout, configureModeBar);
 
       var dissolvedoxygenChart = document.getElementById('dissolvedoxygenChart');
-      Plotly.newPlot('dissolvedoxygenChart', dissolvedoxygenData, dissolvedoxygenChartLayout);
+      Plotly.newPlot('dissolvedoxygenChart', dissolvedoxygenData, dissolvedoxygenChartLayout, configureModeBar);
 
       var nitrateNitriteChart = document.getElementById('nitrateNitriteChart');
-      Plotly.newPlot('nitrateNitriteChart', nitrateNitriteData, nitrateNitriteChartLayout);
+      Plotly.newPlot('nitrateNitriteChart', nitrateNitriteData, nitrateNitriteChartLayout, configureModeBar);
 
       var nitrogenChart = document.getElementById('nitrogenChart');
-      Plotly.newPlot('nitrogenChart', nitrogenData, nitrogenChartLayout);
+      Plotly.newPlot('nitrogenChart', nitrogenData, nitrogenChartLayout, configureModeBar);
 
       var orthophosphateChart = document.getElementById('orthophosphateChart');
-      Plotly.newPlot('orthophosphateChart', orthophosphateData, orthophosphateChartLayout);
+      Plotly.newPlot('orthophosphateChart', orthophosphateData, orthophosphateChartLayout, configureModeBar);
 
       var phaeophytinChart = document.getElementById('phaeophytinChart');
-      Plotly.newPlot('phaeophytinChart', phaeophytinData, phaeophytinChartLayout);
+      Plotly.newPlot('phaeophytinChart', phaeophytinData, phaeophytinChartLayout, configureModeBar);
 
       // var precipitationChart = document.getElementById('precipitationChart');
-      // Plotly.newPlot('precipitationChart', precipitationData, precipitationChartLayout);
+      // Plotly.newPlot('precipitationChart', precipitationData, precipitationChartLayout, configureModeBar);
 
       var salinityChart = document.getElementById('salinityChart');
-      Plotly.newPlot('salinityChart', salinityData, salinityChartLayout);
+      Plotly.newPlot('salinityChart', salinityData, salinityChartLayout, configureModeBar);
 
       var waterTemperatureChart = document.getElementById('waterTemperatureChart');
-      Plotly.newPlot('waterTemperatureChart', waterTemperatureData, waterTemperatureChartLayout);
+      Plotly.newPlot('waterTemperatureChart', waterTemperatureData, waterTemperatureChartLayout, configureModeBar);
 
       // USE THE 'nsewdrag' PLOTLY ELEMENT TO HANDLE ON/OFF OF POINTER CURSOR
       const dragLayerAllWqMeasurables = document.getElementsByClassName('nsewdrag')[0];
@@ -571,4 +588,10 @@ export default {
 </script>
 
 <style>
+/* MAKE THE PLOTLY PLOTS THE SAME SIZE & CENTER THEM WITHIN THE 'chartsContainer' DIV */
+.js-plotly-plot {
+  width: 1624px;
+  margin: 0 auto;
+}
+
 </style>
