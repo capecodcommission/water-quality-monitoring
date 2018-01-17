@@ -48,4 +48,15 @@ export default {
     height: 100%;
     width: 100%;
   }
+
+  .esri-popup__button {
+
+    font-size: 18px !important
+  }
+
+  .esri-popup__action-text {
+
+    overflow: visible !important
+  }
+
 </style>

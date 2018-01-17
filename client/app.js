@@ -4,6 +4,8 @@ import App from './components/App'
 import router from './router'
 import store from './store'
 import $ from 'jquery'
+var _ = require('lodash');
+var moment = require('moment')
 window.$ = $
 
 import {ClientTable} from 'vue-tables-2';

@@ -19,7 +19,9 @@
 
       <option :value = '0'>Select an Embayment</option>
       <option v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
-    </select>
+    </select><br>
+
+    <button id = 'home' style = 'margin-top: 5% !important'  class = 'btn btn-primary'>Home</button>
 
   </div>
 
@@ -30,6 +32,14 @@ import * as esriLoader from 'esri-loader'
 import { createMap } from '../components/esrimap'
 
 export default {
+
+  data() {
+
+    return {
+
+      thisHome: false
+    }
+  },
 
   computed: {
 
@@ -48,6 +58,9 @@ export default {
 
     // load embayment names on page load
     this.$store.dispatch('loadEmbaymentNames')
+
+    // Load station names based on the embayment name
+    // this.$store.dispatch('loadStations', this.$route.params.embayName)
   },
 
   methods: {

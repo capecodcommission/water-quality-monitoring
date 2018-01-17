@@ -20,7 +20,7 @@ export default new Router({
     // Table component with station id parameter
     {
     	name: 'table',
-      path: '/Station/:id/Table',
+      path: '/Station/:embayName/:id/Table',
       component: Table
     },
 
