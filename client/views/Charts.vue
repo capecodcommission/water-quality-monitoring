@@ -4,18 +4,18 @@
       <wqHeader></wqHeader>
     </div>
 
-    <div class = 'row' id = 'chartsContainer'>
-      <div id = 'allWqMeasurablesChart'></div>
-      <div id = 'ammoniaChart'></div>
-      <div id = 'chlorophyllChart'></div>
-      <div id = 'dissolvedoxygenChart'></div>
-      <div id = 'nitrateNitriteChart'></div>
-      <div id = 'nitrogenChart'></div>
-      <div id = 'orthophosphateChart'></div>
-      <div id = 'phaeophytinChart'></div>
-      <!-- <div id = 'precipitationChart'></div> -->
-      <div id = 'salinityChart'></div>
-      <div id = 'waterTemperatureChart'></div>
+    <div id = 'chartsContainer'>
+      <div id = 'allWqMeasurablesChart' class = 'responsive-plot'></div>
+      <div id = 'ammoniaChart' class = 'responsive-plot'></div>
+      <div id = 'chlorophyllChart' class = 'responsive-plot'></div>
+      <div id = 'dissolvedoxygenChart' class = 'responsive-plot'></div>
+      <div id = 'nitrateNitriteChart' class = 'responsive-plot'></div>
+      <div id = 'nitrogenChart' class = 'responsive-plot'></div>
+      <div id = 'orthophosphateChart' class = 'responsive-plot'></div>
+      <div id = 'phaeophytinChart' class = 'responsive-plot'></div>
+      <!-- <div id = 'precipitationChart' class = 'responsive-plot'></div> -->
+      <div id = 'salinityChart' class = 'responsive-plot'></div>
+      <div id = 'waterTemperatureChart' class = 'responsive-plot'></div>
     </div>
   </div>
 
@@ -216,7 +216,6 @@ export default {
       var allWqMeasurablesChartLayout = {
         title: 'All Water Quality Measurables',
         paper_bgcolor: '#dedee6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -228,7 +227,6 @@ export default {
       var ammoniumChartLayout = {
         title: 'Ammonium (μm)',
         paper_bgcolor: '#c3c3c6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -254,7 +252,6 @@ export default {
       var chlorophyllChartLayout = {
         title: 'Chlorophyll (μm)',
         paper_bgcolor: '#dedee6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -280,7 +277,6 @@ export default {
       var dissolvedoxygenChartLayout = {
         title: 'Dissolved Oxygen (mg/L)',
         paper_bgcolor: '#c3c3c6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -306,7 +302,6 @@ export default {
       var nitrateNitriteChartLayout = {
         title: 'Nitrate Nitrite (μm)',
         paper_bgcolor: '#dedee6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -332,7 +327,6 @@ export default {
       var nitrogenChartLayout = {
         title: 'Nitrogen (μm)',
         paper_bgcolor: '#c3c3c6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -358,7 +352,6 @@ export default {
       var orthophosphateChartLayout = {
         title: 'Orthophosphate (μm)',
         paper_bgcolor: '#dedee6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -384,7 +377,6 @@ export default {
       var phaeophytinChartLayout = {
         title: 'Phaeophytin (μg/L)',
         paper_bgcolor: '#c3c3c6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -409,7 +401,6 @@ export default {
       // PRECIPITATION CHART LAYOUT
       // var precipitationChartLayout = {
       //   title: 'Precipitation (in)',
-      //   autosize: 'true',
       //   hoverlabel: {
       //    font: {
       //      color: '#e5e5e5'
@@ -435,7 +426,6 @@ export default {
       var salinityChartLayout = {
         title: 'Salinity (ppt)',
         paper_bgcolor: '#dedee6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -461,7 +451,6 @@ export default {
       var waterTemperatureChartLayout = {
         title: 'Water Temperature (°C)',
         paper_bgcolor: '#c3c3c6',
-        autosize: 'true',
         hoverlabel: {
           font: {
             color: '#e5e5e5'
@@ -627,6 +616,30 @@ export default {
         dragLayerWaterTemperature.style.cursor = ''
       });
 
+      // MAKE THE PLOTS RESPONSIVE
+      // RESOURCES: https://plot.ly/javascript/responsive-fluid-layout/ & https://gist.github.com/aerispaha/63bb83208e6728188a4ee701d2b25ad5
+      (function() {
+        var d3 = Plotly.d3;
+        var WIDTH_IN_PERCENT_OF_PARENT = 100,
+        HEIGHT_IN_PERCENT_OF_PARENT = 90;
+
+        var gd3 = d3.selectAll(".responsive-plot")
+        .style({
+          width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+          'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
+
+          height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
+          'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+        });
+
+        var nodes_to_resize = gd3[0];
+        window.onresize = function() {
+          for (var i = 0; i < nodes_to_resize.length; i++) {
+            Plotly.Plots.resize(nodes_to_resize[i]);
+          }
+        };
+      })();
+
     }
 
 },
@@ -644,9 +657,8 @@ export default {
 
 <style>
 /* MAKE THE PLOTLY PLOTS THE SAME SIZE & CENTER THEM WITHIN THE 'chartsContainer' DIV */
-.js-plotly-plot {
-  width: 1624px;
+/* .js-plotly-plot {
   margin: 0 auto;
-}
+} */
 
 </style>

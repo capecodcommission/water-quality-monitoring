@@ -6,7 +6,7 @@
 
 > mario-working branch: Adding verbose comments to existing components
 
-> shawn-working branch: changed marker pop-up text color to be uniformly light gray
+> shawn-working branch: Added code to make the plotly plots responsive.  With the code, also added the 2 resources referenced for the responsive code.
 > Ready for review
 
 ## Modules
