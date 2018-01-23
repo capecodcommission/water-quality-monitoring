@@ -45,32 +45,40 @@ export const createMap = function (loader) {
       // Embayment featurelayer containing polygons
       var embayments = new FeatureLayer({
         url: "http://gis-services.capecodcommission.org/arcgis/rest/services/wMVP/WaterQualityMonitoringStations/MapServer/1",
-        outFields: ['*'],
-        popupTemplate: {
-          title: '{EMBAY_DISP}',
-          content: '{*}'
-        }
+        outFields: ['*']
       });
 
       // Action object contained within infotemplate for each station point
       var viewStation = {
         title: "View Station",
         id: "view-station",
-        className: "btn btn-primary"
+        className: "btn btn-primary btn-lg"
       };
 
       // Infotemplate for each station point, all properties shown
       var stationTemplate = {
 
         title: "{Station} {Embayment}",
-        content: "{*}",
-        actions: [viewStation]
+        actions: [viewStation],
+        content: [
+          {
+            type: 'fields',
+            fieldInfos: [
+              {
+                fieldName: 'Station'
+              },
+              {
+                fieldName: 'Quality'
+              }
+            ]
+          }
+        ]
       };
 
       // Station featurelayer containing points
       var stations = new FeatureLayer({
         url: "http://gis-services.capecodcommission.org/arcgis/rest/services/wMVP/WaterQualityMonitoringStations/MapServer/0",
-        outFields: ['*'],
+        outFields: ['Station','Quality'],
         popupTemplate: stationTemplate
       })
 
@@ -106,6 +114,8 @@ export const createMap = function (loader) {
         }
       })
 
+      $('#home').hide()
+
       // Zoom to selected geography on dropdown selection
       // If default selection, reset map zoom, else zoom to selected area
       $('#embaySelect').on('change', function() {
@@ -114,7 +124,10 @@ export const createMap = function (loader) {
 
         if (x === '0') {
 
+          $('#home').hide()
+
           embayments.definitionExpression = ''
+          stations.definitionExpression = ''
           
           embayments.when(() => {
 
@@ -125,16 +138,27 @@ export const createMap = function (loader) {
           })
         } else {
 
+          $('#home').show()
+
           embayments.definitionExpression = "EMBAY_DISP = " + "'" + x + "'"
+          stations.definitionExpression = "Embayment = " + "'" + x + "'"
 
           embayments.when(() => {
 
-            return embayments.queryExtent()
+            return stations.queryExtent()
           }).then((response) => {
 
             view.goTo(response)
           })
         }
+      })
+
+
+      // set embaySelect value to default, trigger change operation caught by function above
+      $('#home').on('click', function() {
+
+        $('#embaySelect').val('0')
+        $('#embaySelect').change()
       })
     }
   )

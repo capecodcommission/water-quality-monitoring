@@ -48,4 +48,10 @@ export default {
     height: 100%;
     width: 100%;
   }
+
+  .esri-popup__button {
+
+    font-size: 18px !important
+  }
+
 </style>
