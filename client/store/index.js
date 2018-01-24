@@ -6,7 +6,10 @@ Vue.use(Vuex)
 
 const state = {
   embaymentNames: [],
-  wqStation: []
+  wqStation: [],
+  stationNames: [],
+  stationId: '',
+  embayName: ''
 }
 
 const mutations = {
@@ -21,6 +24,22 @@ const mutations = {
   LOAD_EMBAYMENTNAMES (state, names) {
 
     state.embaymentNames = names.recordsets[0]
+  },
+
+  // Load station names into state
+  LOAD_STATIONS (state, name) {
+
+    state.stationNames = name.recordsets[0]
+  },
+
+  LOAD_STATIONID (state, id) {
+
+    state.stationId = id
+  },
+
+  LOAD_EMBAYNAME (state, name) {
+
+    state.embayName = name
   }
 }
 
@@ -44,6 +63,25 @@ const actions = {
 
       commit("LOAD_EMBAYMENTNAMES", result)
     })
+  },
+
+  // Get station names from API based on embayment name, pass data to mutation
+  loadStations ({commit}, name) {
+
+    $.getJSON("http://sql-connect.api.capecodcommission.org/api/getStations/" + name, function (result) {
+
+      commit("LOAD_STATIONS", result)
+    })
+  },
+
+  loadStationId ({commit}, id) {
+
+    commit("LOAD_STATIONID", id)
+  },
+
+  loadEmbayName ({commit}, name) {
+
+    commit("LOAD_EMBAYNAME", name)
   }
 }
 

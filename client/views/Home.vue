@@ -54,4 +54,9 @@ export default {
     font-size: 18px !important
   }
 
+  .esri-popup__action-text {
+
+    overflow: visible !important
+  }
+
 </style>

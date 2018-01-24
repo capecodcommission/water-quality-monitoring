@@ -23,6 +23,25 @@ import wqHeader from '../components/Header'
 import clientTable from '../components/clientTable'
 
 export default {
+
+  computed: {
+
+    embayNames() {
+
+      return this.$store.state.embaymentNames
+    },
+
+    wqStation() {
+
+      return this.$store.state.wqStation
+    },
+
+    wqStations() {
+
+      return this.$store.state.stationNames
+    }
+  },
+
   components: {
 
     wqHeader,
@@ -32,7 +51,23 @@ export default {
   mounted() {
 
     // Load station data using station id from route
-  	this.$store.dispatch('getStation', this.$route.params.id)
+    this.$store.dispatch('loadEmbaymentNames')
+    this.$store.dispatch('loadEmbayName', this.$route.params.embayName)
+  },
+
+  watch: {
+
+    embayNames: function(x) {
+
+      this.$store.dispatch('loadStations', this.$route.params.embayName)
+    },
+
+    wqStations: function(x) {
+
+      this.$store.dispatch('loadStationId', this.$route.params.id)
+
+      this.$store.dispatch('getStation', this.$route.params.id)
+    }
   }
 }
 </script>

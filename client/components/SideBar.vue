@@ -58,6 +58,9 @@ export default {
 
     // load embayment names on page load
     this.$store.dispatch('loadEmbaymentNames')
+
+    // Load station names based on the embayment name
+    // this.$store.dispatch('loadStations', this.$route.params.embayName)
   },
 
   methods: {

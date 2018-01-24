@@ -38,7 +38,7 @@ export default {
           down:'fa-sort',
           is: 'fa-sort'
         },
-        toMomentFormat: true,
+        // toMomentFormat: true,
         dateFormat: 'DD/MM/YYYY',
         dateColumns: ['date']
       }
@@ -143,9 +143,9 @@ export default {
 
 <style lang = 'scss'>
 
-.VueTables__sort-icon {
+/*.VueTables__sort-icon {
 
   margin-right: 50%
-}
+}*/
 
 </style>

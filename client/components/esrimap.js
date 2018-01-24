@@ -105,7 +105,7 @@ export const createMap = function (loader) {
 
             if (rows.recordset.length > 1) {
 
-              router.push({name: 'table', params: {id: attributes.Station}})
+              router.push({name: 'table', params: {id: attributes.Station, embayName: attributes.Embayment}})
             } else {
 
               $('.esri-popup__content').append("<p id = 'nodata' class = 'text-danger'>No data available</p>")

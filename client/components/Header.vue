@@ -4,9 +4,24 @@
 
     <div class = 'col-md-12 text-center'>
 
-      <button class = 'btn btn-primary'>{{stationId}}</button><br>
-      <button @click = "goTo('home')" class = 'btn btn-success pull-right'>Restart</button>
+      <div class = 'col-md-4'>
+        <select v-model = 'selectedEmbay' id = 'embaymentSelect' class = 'pull-left btn btn-primary dropdown-toggle'>
+          <option>Select an Embayment</option>
+          <option v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
+        </select>
+      </div>
+
+      <div class = 'col-md-4 btn-group text-center'>
+        <button v-for = 'name in stationNames' @click = "loadStation(name.Uid)" :class = "[name.Uid === stationId ? 'btn btn-primary text-center' : '', 'btn btn-secondary text-center']">{{name.Uid}}</button>
+      </div>
+
+      <div class = 'col-md-4'>
+        <button @click = "goTo('home')" class = 'btn btn-success pull-right'>Restart</button>
+      </div>
+
     </div>
+
+    <br><br>
 
     <div class = 'col-md-12'>
 
@@ -26,12 +41,36 @@ import router from '../router'
 
 export default {
 
+  data() {
+
+    return {
+
+      selectedEmbay: 'Select an Embayment'
+    }
+  },
+
   computed: {
 
     // Show station id passed from route
     stationId() {
 
-      return this.$route.params.id
+      return this.$store.state.stationId
+    },
+
+    // Show station id passed from route
+    stationNames() {
+
+      return this.$store.state.stationNames
+    },
+
+    embaymentNames() {
+
+      return this.$store.state.embaymentNames
+    },
+
+    embayName() {
+
+      return this.$store.state.embayName
     }
   },
 
@@ -41,10 +80,19 @@ export default {
 
   mounted() {
 
-    
+
   },
 
   methods: {
+
+    loadStation(x) {
+
+      this.$route.params.id = x
+
+      this.$store.dispatch('loadStationId', x)
+
+      this.$store.dispatch('getStation', x)
+    },
 
     downloadExcel() {
 
@@ -55,14 +103,31 @@ export default {
     goTo(x) {
 
       var y = this.$route.params.id
+      var z = this.$route.params.embayName
 
       if (x === 'home') {
 
         router.push({name: x})
       } else {
 
-        router.push({name: x, params: {id: y}})
+        router.push({name: x, params: {id: y, embayName: z}})
       }
+    }
+  },
+
+  watch: {
+
+    selectedEmbay: function(x) {
+
+      this.$route.params.embayName = x
+
+      this.$store.dispatch('loadEmbayName', x)
+
+      this.$store.dispatch('loadStations', x)
+    },
+
+    stationId: function(x) {
+
     }
   }
 }
