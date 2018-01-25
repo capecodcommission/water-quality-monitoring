@@ -80,7 +80,6 @@ export default {
 
   mounted() {
 
-
   },
 
   methods: {

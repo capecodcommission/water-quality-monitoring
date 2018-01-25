@@ -136,6 +136,10 @@ export default {
 
   watch: {
 
+    wqStation: function(x) {
+
+      $('#embaymentSelect').val(this.$store.state.embayName)
+    }
 
   }
 }
