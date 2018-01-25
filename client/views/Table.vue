@@ -65,7 +65,6 @@ export default {
     wqStations: function(x) {
 
       this.$store.dispatch('loadStationId', this.$route.params.id)
-
       this.$store.dispatch('getStation', this.$route.params.id)
     }
   }

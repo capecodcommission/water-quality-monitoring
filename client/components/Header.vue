@@ -106,6 +106,7 @@ export default {
 
       if (x === 'home') {
 
+        this.$store.dispatch('clearAll')
         router.push({name: x})
       } else {
 

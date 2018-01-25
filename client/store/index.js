@@ -40,6 +40,15 @@ const mutations = {
   LOAD_EMBAYNAME (state, name) {
 
     state.embayName = name
+  },
+
+  CLEAR_ALL (state) {
+
+    state.embaymentNames = []
+    state.wqStation = []
+    state.stationNames = []
+    state.stationId = []
+    state.embayName = []
   }
 }
 
@@ -82,6 +91,11 @@ const actions = {
   loadEmbayName ({commit}, name) {
 
     commit("LOAD_EMBAYNAME", name)
+  },
+
+  clearAll ({commit}) {
+
+    commit("CLEAR_ALL")
   }
 }
 
