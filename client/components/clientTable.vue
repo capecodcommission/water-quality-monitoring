@@ -58,11 +58,7 @@ export default {
 
           x.date = x.date.slice(0, x.date.indexOf('T'))
 
-<<<<<<< HEAD
-          x.date = moment(x.date).format("MM/DD/YYYY")
-=======
           x.date = moment(x.date).format("YYYY/MM/DD")
->>>>>>> mario-working
         }
 
         if (!!x.ammonium) {
