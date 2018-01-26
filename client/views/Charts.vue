@@ -4,18 +4,18 @@
       <wqHeader></wqHeader>
     </div>
 
-    <div class = 'row'>
-      <div id = 'allWqMeasurablesChart'></div>
-      <div id = 'ammoniaChart'></div>
-      <div id = 'chlorophyllChart'></div>
-      <div id = 'dissolvedoxygenChart'></div>
-      <div id = 'nitrateNitriteChart'></div>
-      <div id = 'nitrogenChart'></div>
-      <div id = 'orthophosphateChart'></div>
-      <div id = 'phaeophytinChart'></div>
-      <div id = 'precipitationChart'></div>
-      <div id = 'salinityChart'></div>
-      <div id = 'waterTemperatureChart'></div>
+    <div id = 'chartsContainer'>
+      <div id = 'allWqMeasurablesChart' class = 'responsive-plot'></div>
+      <div id = 'ammoniaChart' class = 'responsive-plot'></div>
+      <div id = 'chlorophyllChart' class = 'responsive-plot'></div>
+      <div id = 'dissolvedoxygenChart' class = 'responsive-plot'></div>
+      <div id = 'nitrateNitriteChart' class = 'responsive-plot'></div>
+      <div id = 'nitrogenChart' class = 'responsive-plot'></div>
+      <div id = 'orthophosphateChart' class = 'responsive-plot'></div>
+      <div id = 'phaeophytinChart' class = 'responsive-plot'></div>
+      <!-- <div id = 'precipitationChart' class = 'responsive-plot'></div> -->
+      <div id = 'salinityChart' class = 'responsive-plot'></div>
+      <div id = 'waterTemperatureChart' class = 'responsive-plot'></div>
     </div>
   </div>
 
@@ -50,6 +50,8 @@ export default {
 
   methods: {
 
+    // TODO | WISHLIST | ADD PRELOADER > SOMETHING LIKE: https://codepen.io/MathiasNielsen/pen/jrBEAB
+
     makeCharts () {
 
       // RETRIEVE 'wqStation' DATA & SET IT TO 'wqStationData'
@@ -66,7 +68,7 @@ export default {
       const nitrogenValues = [];
       const orthophosphateValues = [];
       const phaeophytinValues = [];
-      const precipitationValues = [];
+      // const precipitationValues = [];
       const salinityValues = [];
       const waterTemperatureValues =[];
 
@@ -74,16 +76,36 @@ export default {
       var pushThings = wqStationData.map(function(elem, i, wqStationData) {
         dates.push(elem.date);
         depths.push(elem.depth);
-        ammoniumValues.push(Math.round(elem.ammonium * 100)/100);
-        cholorophyllValues.push(Math.round(elem.chlorophyll * 100)/100);
-        dissolvedOxygenValues.push(Math.round(elem.disolvedoxygen * 100)/100);
-        nitrateNitriteValues.push(Math.round(elem.nitrate_nitrite * 100)/100);
-        nitrogenValues.push(Math.round(elem.nitrogen * 100)/100);
-        orthophosphateValues.push(Math.round(elem.orthophosphate * 100)/100);
-        phaeophytinValues.push(Math.round(elem.phaeophytin * 100)/100);
-        precipitationValues.push(Math.round(elem.precipitation * 100)/100);
-        salinityValues.push(Math.round(elem.salinity * 100)/100);
-        waterTemperatureValues.push(Math.round(elem.water_temp * 100)/100);
+        if (elem.ammonium !== null) {
+          ammoniumValues.push(Math.round(elem.ammonium * 100)/100)
+        };
+        if (elem.chlorophyll !== null) {
+          cholorophyllValues.push(Math.round(elem.chlorophyll * 100)/100)
+        };
+        if (elem.disolvedoxygen !== null) {
+          dissolvedOxygenValues.push(Math.round(elem.disolvedoxygen * 100)/100)
+        };
+        if (elem.nitrate_nitrite !== null) {
+          nitrateNitriteValues.push(Math.round(elem.nitrate_nitrite * 100)/100)
+        };
+        if (elem.nitrate_nitrite !== null) {
+          nitrogenValues.push(Math.round(elem.nitrogen * 100)/100)
+        };
+        if (elem.orthophosphate !== null) {
+          orthophosphateValues.push(Math.round(elem.orthophosphate * 100)/100)
+        };
+        if (elem.phaeophytin !== null) {
+          phaeophytinValues.push(Math.round(elem.phaeophytin * 100)/100)
+        };
+        // if (elem.precipitation !== null) {
+        //   precipitationValues.push(Math.round(elem.precipitation * 100)/100)
+        // };
+        if (elem.salinity !== null) {
+          salinityValues.push(Math.round(elem.salinity * 100)/100)
+        };
+        if (elem.water_temp !== null) {
+          waterTemperatureValues.push(Math.round(elem.water_temp * 100)/100)
+        };
       });
 
       // SET UP WATER QUALITY MEASURABLES DATA FILLING WITH NECESSARY PLOTLY PARAMETERS
@@ -93,7 +115,7 @@ export default {
         line: {color: '#1F77B4'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Ammonium (mg/L)'
+        name: 'Ammonium (μm)'
       };
 
       var chlorophyll = {
@@ -102,7 +124,7 @@ export default {
         line: {color: '#FF7F0E'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Chlorophyll (μg/L)'
+        name: 'Chlorophyll (μm)'
       };
 
       var dissolvedoxygen = {
@@ -120,7 +142,7 @@ export default {
         line: {color: '#d62728'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Nitrate Nitrite (mg/L)'
+        name: 'Nitrate Nitrite (μm)'
       };
 
       var nitrogen = {
@@ -129,7 +151,7 @@ export default {
         line: {color: '#9467bd'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Nitrogen (mg/L)'
+        name: 'Nitrogen (μm)'
       };
 
       var orthophosphate = {
@@ -138,7 +160,7 @@ export default {
         line: {color: '#8c564b'},
         type: 'scatter',
         mode: 'markers',
-        name: 'Orthophosphate (mg/L)'
+        name: 'Orthophosphate (μm)'
       };
 
       var phaeophytin = {
@@ -150,14 +172,14 @@ export default {
         name: 'Phaeophytin (μg/L)'
       };
 
-      var precipitation = {
-        x: dates,
-        y: precipitationValues,
-        line: {color: '#7f7f7f'},
-        type: 'scatter',
-        mode: 'markers',
-        name: 'Precipitation (in)'
-      };
+      // var precipitation = {
+      //   x: dates,
+      //   y: precipitationValues,
+      //   line: {color: '#7f7f7f'},
+      //   type: 'scatter',
+      //   mode: 'markers',
+      //   name: 'Precipitation (in)'
+      // };
 
       var salinity = {
         x: dates,
@@ -178,7 +200,7 @@ export default {
       };
 
       // SET UP DATA ARRAYS TO FEED INDIVIDUAL CHARTS
-      var allWqMeasurablesData = [ammonium, chlorophyll, dissolvedoxygen, nitrateNitrite, nitrogen, orthophosphate, phaeophytin, precipitation, salinity, waterTemperature];
+      var allWqMeasurablesData = [ammonium, chlorophyll, dissolvedoxygen, nitrateNitrite, nitrogen, orthophosphate, phaeophytin, salinity, waterTemperature];
       var ammoniumData = [ammonium];
       var chlorophyllData = [chlorophyll];
       var dissolvedoxygenData = [dissolvedoxygen];
@@ -186,44 +208,66 @@ export default {
       var nitrogenData = [nitrogen];
       var orthophosphateData = [orthophosphate];
       var phaeophytinData = [phaeophytin];
-      var precipitationData = [precipitation];
+      // var precipitationData = [precipitation];
       var salinityData = [salinity];
       var waterTemperatureData = [waterTemperature];
 
       // ALL WATER QUALITY MEASURABLES CHART LAYOUT
       var allWqMeasurablesChartLayout = {
-        title: 'All Water Quality Measurables'
+        title: 'All Water Quality Measurables',
+        paper_bgcolor: '#dedee6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        }
       };
 
       // AMMONIA CHART LAYOUT
       var ammoniumChartLayout = {
-        title: 'Ammonium (mg/L)',
+        title: 'Ammonium (μm)',
+        paper_bgcolor: '#c3c3c6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#d2e3f0',
+            bordercolor: '#1F77B4',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: ['Math.min(ammoniumValues)', 'Math.max(ammoniumValues)'],
           type: 'linear'
         },
-        hovermode:'closest'
+        hovermode:'closest',
       };
 
       // CHLOROPHYLL CHART LAYOUT
       var chlorophyllChartLayout = {
-        title: 'Chlorophyll (μg/L)',
+        title: 'Chlorophyll (μm)',
+        paper_bgcolor: '#dedee6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#ffe5ce',
+            bordercolor: '#FF7F0E',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(cholorophyllValues), Math.max(cholorophyllValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -232,15 +276,23 @@ export default {
       // D.O. CHART LAYOUT
       var dissolvedoxygenChartLayout = {
         title: 'Dissolved Oxygen (mg/L)',
+        paper_bgcolor: '#c3c3c6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#d4ecd4',
+            bordercolor: '#2CA02C',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(dissolvedOxygenValues), Math.max(dissolvedOxygenValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -248,16 +300,24 @@ export default {
 
       // NITRATE NITRITE CHART LAYOUT
       var nitrateNitriteChartLayout = {
-        title: 'Nitrate Nitrite (mg/L)',
+        title: 'Nitrate Nitrite (μm)',
+        paper_bgcolor: '#dedee6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#f6d3d4',
+            bordercolor: '#d62728',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(nitrateNitriteValues), Math.max(nitrateNitriteValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -265,16 +325,24 @@ export default {
 
       // NITROGEN CHART LAYOUT
       var nitrogenChartLayout = {
-        title: 'Nitrogen (mg/L)',
+        title: 'Nitrogen (μm)',
+        paper_bgcolor: '#c3c3c6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#e9e0f1',
+            bordercolor: '#9467bd',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(nitrogenValues), Math.max(nitrogenValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -282,16 +350,24 @@ export default {
 
       // ORTHOPHOSPHATE CHART LAYOUT
       var orthophosphateChartLayout = {
-        title: 'Orthophosphate (mg/L)',
+        title: 'Orthophosphate (μm)',
+        paper_bgcolor: '#dedee6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#e8dddb',
+            bordercolor: '#8c564b',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(orthophosphateValues), Math.max(orthophosphateValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -300,49 +376,72 @@ export default {
       // PHAEOPHYTIN CHART LAYOUT
       var phaeophytinChartLayout = {
         title: 'Phaeophytin (μg/L)',
+        paper_bgcolor: '#c3c3c6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bgcolor: '#f9e3f2',
+            bordercolor: '#e377c2',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(phaeophytinValues), Math.max(phaeophytinValues)],
           type: 'linear'
         },
         hovermode:'closest'
       };
 
       // PRECIPITATION CHART LAYOUT
-      var precipitationChartLayout = {
-        title: 'Precipitation (in)',
-        xaxis: {
-          autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
-          type: 'date'
-        },
-        yaxis: {
-          autorange: true,
-          range: [Math.min(precipitationValues), Math.max(precipitationValues)],
-          type: 'linear'
-        },
-        hovermode:'closest'
-      };
+      // var precipitationChartLayout = {
+      //   title: 'Precipitation (in)',
+      //   hoverlabel: {
+      //    font: {
+      //      color: '#e5e5e5'
+      //    }
+      //   },
+      //   xaxis: {
+      //     autorange: true,
+      //     rangeslider: {
+      //      bgcolor: '#f9e3f2',
+      //      bordercolor: '#e377c2',
+      //      borderwidth: '1'
+      //     },
+      //     type: 'date'
+      //   },
+      //   yaxis: {
+      //     autorange: true,
+      //     type: 'linear'
+      //   },
+      //   hovermode:'closest'
+      // };
 
       // SALINITY CHART LAYOUT
       var salinityChartLayout = {
         title: 'Salinity (ppt)',
+        paper_bgcolor: '#dedee6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bordercolor: '#bcbd22',
+            bgcolor: '#f1f1d2',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(salinityValues), Math.max(salinityValues)],
           type: 'linear'
         },
         hovermode:'closest'
@@ -351,55 +450,69 @@ export default {
       // ORTHOPHOSPHATE CHART LAYOUT
       var waterTemperatureChartLayout = {
         title: 'Water Temperature (°C)',
+        paper_bgcolor: '#c3c3c6',
+        hoverlabel: {
+          font: {
+            color: '#e5e5e5'
+          }
+        },
         xaxis: {
           autorange: true,
-          range: ['Math.min(dates)', 'Math.max(dates)'],
-          rangeslider: {range: ['Math.min(dates)', 'Math.max(dates)']},
+          rangeslider: {
+            bordercolor: '#17BECF',
+            bgcolor: '#d0f2f5',
+            borderwidth: '1'
+          },
           type: 'date'
         },
         yaxis: {
           autorange: true,
-          range: [Math.min(waterTemperatureValues), Math.max(waterTemperatureValues)],
           type: 'linear'
         },
         hovermode:'closest'
       };
 
+      // RESOURCE
       // PLOTLY TIME SERIES https://plot.ly/javascript/time-series/
+
+      // CONFIGURE THE PLOTLY MODE BAR (TOP RIGHT ON HOVER)
+      var configureModeBar = { modeBarButtonsToRemove: ['sendDataToCloud', 'lasso2d'], displaylogo: false, showTips: true };
 
       // SET UP CHARTS FEEDING IN DIV, DATA & LAYOUT FROM ABOVE
       var allWqMeasurablesChart = document.getElementById('allWqMeasurablesChart');
-      Plotly.newPlot('allWqMeasurablesChart', allWqMeasurablesData, allWqMeasurablesChartLayout);
+      Plotly.newPlot('allWqMeasurablesChart', allWqMeasurablesData, allWqMeasurablesChartLayout, configureModeBar);
+
+      document.querySelector('[data-title="Reset axes"]').click();
 
       var ammoniaChart = document.getElementById('ammoniaChart');
-      Plotly.newPlot('ammoniaChart', ammoniumData, ammoniumChartLayout);
+      Plotly.newPlot('ammoniaChart', ammoniumData, ammoniumChartLayout, configureModeBar);
 
       var chlorophyllChart = document.getElementById('chlorophyllChart');
-      Plotly.newPlot('chlorophyllChart', chlorophyllData, chlorophyllChartLayout);
+      Plotly.newPlot('chlorophyllChart', chlorophyllData, chlorophyllChartLayout, configureModeBar);
 
       var dissolvedoxygenChart = document.getElementById('dissolvedoxygenChart');
-      Plotly.newPlot('dissolvedoxygenChart', dissolvedoxygenData, dissolvedoxygenChartLayout);
+      Plotly.newPlot('dissolvedoxygenChart', dissolvedoxygenData, dissolvedoxygenChartLayout, configureModeBar);
 
       var nitrateNitriteChart = document.getElementById('nitrateNitriteChart');
-      Plotly.newPlot('nitrateNitriteChart', nitrateNitriteData, nitrateNitriteChartLayout);
+      Plotly.newPlot('nitrateNitriteChart', nitrateNitriteData, nitrateNitriteChartLayout, configureModeBar);
 
       var nitrogenChart = document.getElementById('nitrogenChart');
-      Plotly.newPlot('nitrogenChart', nitrogenData, nitrogenChartLayout);
+      Plotly.newPlot('nitrogenChart', nitrogenData, nitrogenChartLayout, configureModeBar);
 
       var orthophosphateChart = document.getElementById('orthophosphateChart');
-      Plotly.newPlot('orthophosphateChart', orthophosphateData, orthophosphateChartLayout);
+      Plotly.newPlot('orthophosphateChart', orthophosphateData, orthophosphateChartLayout, configureModeBar);
 
       var phaeophytinChart = document.getElementById('phaeophytinChart');
-      Plotly.newPlot('phaeophytinChart', phaeophytinData, phaeophytinChartLayout);
+      Plotly.newPlot('phaeophytinChart', phaeophytinData, phaeophytinChartLayout, configureModeBar);
 
-      var precipitationChart = document.getElementById('precipitationChart');
-      Plotly.newPlot('precipitationChart', precipitationData, precipitationChartLayout);
+      // var precipitationChart = document.getElementById('precipitationChart');
+      // Plotly.newPlot('precipitationChart', precipitationData, precipitationChartLayout, configureModeBar);
 
       var salinityChart = document.getElementById('salinityChart');
-      Plotly.newPlot('salinityChart', salinityData, salinityChartLayout);
+      Plotly.newPlot('salinityChart', salinityData, salinityChartLayout, configureModeBar);
 
       var waterTemperatureChart = document.getElementById('waterTemperatureChart');
-      Plotly.newPlot('waterTemperatureChart', waterTemperatureData, waterTemperatureChartLayout);
+      Plotly.newPlot('waterTemperatureChart', waterTemperatureData, waterTemperatureChartLayout, configureModeBar);
 
       // USE THE 'nsewdrag' PLOTLY ELEMENT TO HANDLE ON/OFF OF POINTER CURSOR
       const dragLayerAllWqMeasurables = document.getElementsByClassName('nsewdrag')[0];
@@ -410,9 +523,9 @@ export default {
       const dragLayerNitrogen = document.getElementsByClassName('nsewdrag')[5];
       const dragLayerOrthophosphate = document.getElementsByClassName('nsewdrag')[6];
       const dragLayerPhaeophytin = document.getElementsByClassName('nsewdrag')[7];
-      const dragLayerPrecipitation = document.getElementsByClassName('nsewdrag')[8];
-      const dragLayerSalinity = document.getElementsByClassName('nsewdrag')[9];
-      const dragLayerWaterTemperature = document.getElementsByClassName('nsewdrag')[10];
+      // const dragLayerPrecipitation = document.getElementsByClassName('nsewdrag')[8];
+      const dragLayerSalinity = document.getElementsByClassName('nsewdrag')[8];
+      const dragLayerWaterTemperature = document.getElementsByClassName('nsewdrag')[9];
 
       // HANDLE POINTER CURSOR ON/OFF FOR ALL CHARTS
       allWqMeasurablesChart.on('plotly_hover', function(allWqMeasurablesData){
@@ -479,13 +592,13 @@ export default {
         dragLayerPhaeophytin.style.cursor = ''
       });
 
-      precipitationChart.on('plotly_hover', function(precipitationData){
-        dragLayerPrecipitation.style.cursor = 'pointer'
-      });
+      // precipitationChart.on('plotly_hover', function(precipitationData){
+      //   dragLayerPrecipitation.style.cursor = 'pointer'
+      // });
 
-      precipitationChart.on('plotly_unhover', function(precipitationData){
-        dragLayerPrecipitation.style.cursor = ''
-      });
+      // precipitationChart.on('plotly_unhover', function(precipitationData){
+      //   dragLayerPrecipitation.style.cursor = ''
+      // });
 
       salinityChart.on('plotly_hover', function(salinityData){
         dragLayerSalinity.style.cursor = 'pointer'
@@ -503,6 +616,30 @@ export default {
         dragLayerWaterTemperature.style.cursor = ''
       });
 
+      // MAKE THE PLOTS RESPONSIVE
+      // RESOURCES: https://plot.ly/javascript/responsive-fluid-layout/ & https://gist.github.com/aerispaha/63bb83208e6728188a4ee701d2b25ad5
+      (function() {
+        var d3 = Plotly.d3;
+        var WIDTH_IN_PERCENT_OF_PARENT = 100,
+        HEIGHT_IN_PERCENT_OF_PARENT = 90;
+
+        var gd3 = d3.selectAll(".responsive-plot")
+        .style({
+          width: WIDTH_IN_PERCENT_OF_PARENT + '%',
+          'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
+
+          height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
+          'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+        });
+
+        var nodes_to_resize = gd3[0];
+        window.onresize = function() {
+          for (var i = 0; i < nodes_to_resize.length; i++) {
+            Plotly.Plots.resize(nodes_to_resize[i]);
+          }
+        };
+      })();
+
     }
 
 },
@@ -519,4 +656,9 @@ export default {
 </script>
 
 <style>
+/* MAKE THE PLOTLY PLOTS THE SAME SIZE & CENTER THEM WITHIN THE 'chartsContainer' DIV */
+/* .js-plotly-plot {
+  margin: 0 auto;
+} */
+
 </style>

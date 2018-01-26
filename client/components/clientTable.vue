@@ -34,12 +34,12 @@ export default {
         },
         sortIcon: { 
           base:'fa', 
-          up:'fa-sort', 
-          down:'fa-sort',
+          up:'fa-sort-asc', 
+          down:'fa-sort-desc',
           is: 'fa-sort'
         },
         // toMomentFormat: true,
-        dateFormat: 'DD/MM/YYYY',
+        dateFormat: 'YYYY/MM/DD',
         dateColumns: ['date']
       }
     }
@@ -58,7 +58,11 @@ export default {
 
           x.date = x.date.slice(0, x.date.indexOf('T'))
 
+<<<<<<< HEAD
           x.date = moment(x.date).format("MM/DD/YYYY")
+=======
+          x.date = moment(x.date).format("YYYY/MM/DD")
+>>>>>>> mario-working
         }
 
         if (!!x.ammonium) {
