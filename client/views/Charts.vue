@@ -649,6 +649,8 @@ export default {
     wqStation: function(data) {
       var thisData = data;
       this.makeCharts(thisData)
+
+      $('#embaymentSelect').val(this.$store.state.embayName)
     }
   }
 }

@@ -27,7 +27,7 @@ export default new Router({
     // Chart component with station id parameter
     {
       name: 'charts',
-      path: '/Station/:id/Charts',
+      path: '/Station/:embayName/:id/Charts',
       component: Charts
     }
   ]
