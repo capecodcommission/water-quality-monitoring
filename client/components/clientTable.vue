@@ -15,7 +15,7 @@ export default {
     return {
 
       // Columns visualized in data table above
-      columns: ['date','salinity','disolvedoxygen','nitrogen','water_temp','precipitation','depth','nitrate_nitrite','ammonium','orthophosphate','chlorophyll','phaeophytin'],
+      columns: ['date','salinity','disolvedoxygen','nitrogen','water_temp','depth','nitrate_nitrite','ammonium','orthophosphate','chlorophyll','phaeophytin'],
       options: {
         // filterByColumn: true,
         headings: {
@@ -24,7 +24,6 @@ export default {
           disolvedoxygen: 'Disolved Oxygen (mg/L)',
           nitrogen: 'Nitrogen (μm)',
           water_temp: 'Water Temperature (°C)',
-          precipitation: 'Precipitation (in)',
           depth: 'Depth (ft)',
           nitrate_nitrite: 'Nitrate-Nitrite (μm)',
           ammonium: 'Ammonium (μm)',
