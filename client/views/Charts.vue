@@ -4,18 +4,20 @@
       <wqHeader></wqHeader>
     </div>
 
-    <div id = 'chartsContainer'>
-      <div id = 'allWqMeasurablesChart' class = 'responsive-plot'></div>
-      <div id = 'ammoniaChart' class = 'responsive-plot'></div>
-      <div id = 'chlorophyllChart' class = 'responsive-plot'></div>
-      <div id = 'dissolvedoxygenChart' class = 'responsive-plot'></div>
-      <div id = 'nitrateNitriteChart' class = 'responsive-plot'></div>
-      <div id = 'nitrogenChart' class = 'responsive-plot'></div>
-      <div id = 'orthophosphateChart' class = 'responsive-plot'></div>
-      <div id = 'phaeophytinChart' class = 'responsive-plot'></div>
-      <!-- <div id = 'precipitationChart' class = 'responsive-plot'></div> -->
-      <div id = 'salinityChart' class = 'responsive-plot'></div>
-      <div id = 'waterTemperatureChart' class = 'responsive-plot'></div>
+    <div class = 'col-md-12'>
+      <div id = 'chartsContainer'>
+        <div id = 'allWqMeasurablesChart' class = 'responsive-plot'></div>
+        <div id = 'ammoniaChart' class = 'responsive-plot'></div>
+        <div id = 'chlorophyllChart' class = 'responsive-plot'></div>
+        <div id = 'dissolvedoxygenChart' class = 'responsive-plot'></div>
+        <div id = 'nitrateNitriteChart' class = 'responsive-plot'></div>
+        <div id = 'nitrogenChart' class = 'responsive-plot'></div>
+        <div id = 'orthophosphateChart' class = 'responsive-plot'></div>
+        <div id = 'phaeophytinChart' class = 'responsive-plot'></div>
+        <!-- <div id = 'precipitationChart' class = 'responsive-plot'></div> -->
+        <div id = 'salinityChart' class = 'responsive-plot'></div>
+        <div id = 'waterTemperatureChart' class = 'responsive-plot'></div>
+      </div>
     </div>
   </div>
 
@@ -628,8 +630,8 @@ export default {
           width: WIDTH_IN_PERCENT_OF_PARENT + '%',
           'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
 
-          height: HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
-          'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+          height: HEIGHT_IN_PERCENT_OF_PARENT + '%',
+          'margin-top': (100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + '%'
         });
 
         var nodes_to_resize = gd3[0];
@@ -662,5 +664,6 @@ export default {
 /* .js-plotly-plot {
   margin: 0 auto;
 } */
+
 
 </style>

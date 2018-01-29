@@ -127,6 +127,7 @@ export default {
   mounted() {
 
 
+
   },
 
   methods: {
@@ -146,9 +147,9 @@ export default {
 
 <style lang = 'scss'>
 
-/*.VueTables__sort-icon {
+span.btn.btn-primary.btn-lg:after {
 
-  margin-right: 50%
-}*/
+  content: 'View Station';
+}
 
 </style>

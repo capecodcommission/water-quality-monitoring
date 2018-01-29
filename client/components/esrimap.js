@@ -50,12 +50,12 @@ export const createMap = function (loader) {
 
       // Action object contained within infotemplate for each station point
       var viewStation = {
-        title: "View Station",
+        // title: "View Station",
         id: "view-station",
         className: "btn btn-primary btn-lg"
       };
 
-      // Infotemplate for each station point, all properties shown
+      // Infotemplate for each station point, 2 fields shown
       var stationTemplate = {
 
         title: "{Station} {Embayment}",
@@ -113,6 +113,8 @@ export const createMap = function (loader) {
           })
         }
       })
+
+      
 
       $('#home').hide()
 
