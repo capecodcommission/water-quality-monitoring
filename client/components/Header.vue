@@ -17,6 +17,8 @@
 
       <div class = 'col-md-4'>
         <button @click = "goTo('home')" class = 'btn btn-success pull-right'>Restart</button>
+        <button @click = 'showMap()' class = 'btn btn-primary'>Show Map</button>
+        <div v-show = 'toggleMap' id = 'mapDiv' class="balt-theme"></div>
       </div>
 
     </div>
@@ -45,7 +47,8 @@ export default {
 
     return {
 
-      selectedEmbay: 'Select an Embayment'
+      selectedEmbay: 'Select an Embayment',
+      toggleMap: false
     }
   },
 
@@ -83,6 +86,11 @@ export default {
   },
 
   methods: {
+
+    showMap() {
+
+      this.toggleMap = !this.toggleMap
+    },
 
     loadStation(x) {
 
@@ -135,5 +143,13 @@ export default {
 
 <style lang = 'scss'>
 
+  #mapDiv {
+    position: fixed;
+    height: 50%;
+    width: 25%;
+    z-index: 555;
+    bottom: 1%;
+    right: 1%;
+  }
 
 </style>
