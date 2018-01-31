@@ -287,14 +287,14 @@ export const createMapTable = function (loader, embaySelect = null, route, store
 
         var x = $(this).val().toString()
 
-        if (x === '0') {
+        if (x === 'Select an Embayment') {
 
           embayments.definitionExpression = ''
           stations.definitionExpression = ''
           
-          stations.when(() => {
+          embayments.when(() => {
 
-            return stations.queryExtent()
+            return embayments.queryExtent()
           }).then((response) => {
 
             view.goTo(response.extent.expand(2))

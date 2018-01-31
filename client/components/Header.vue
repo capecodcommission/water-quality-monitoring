@@ -5,17 +5,21 @@
     <div class = 'col-md-12 text-center'>
 
       <div class = 'col-md-4'>
+
         <select v-model = 'selectedEmbay' id = 'embaymentSelect' class = 'pull-left btn btn-primary dropdown-toggle'>
+          
           <option>Select an Embayment</option>
           <option v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
         </select>
       </div>
 
-      <div class = 'col-md-4 btn-group text-center'>
-        <button v-for = 'name in stationNames' @click = "loadStation(name.Uid)" :class = "[name.Uid === stationId ? 'btn btn-primary text-center' : '', 'btn btn-secondary text-center']">{{name.Uid}}</button>
+      <div style = 'overflow: auto; white-space: nowrap;' class = 'col-md-4 text-center'>
+
+        <button style = 'display: inline-block;' v-for = 'name in stationNames' @click = "loadStation(name.Uid)" :class = "[name.Uid === stationId ? 'btn btn-group btn-primary text-center' : '', 'btn btn-group btn-secondary text-center']">{{name.Uid}}</button>
       </div>
 
       <div class = 'col-md-4'>
+
         <button @click = "goTo('home')" class = 'btn btn-success pull-right'>Restart</button>
         <button @click = 'showMap()' class = 'btn btn-primary'>Show Map</button>
         <div v-show = 'toggleMap' id = 'mapDiv' class="balt-theme"></div>
@@ -87,9 +91,16 @@ export default {
 
   methods: {
 
+    filterNames(names) {
+
+      names.filter()
+    },
+
     showMap() {
 
       this.toggleMap = !this.toggleMap
+      $('#embaymentSelect').val(this.$route.params.embayName)
+      $('#embaymentSelect').change()
     },
 
     loadStation(x) {
