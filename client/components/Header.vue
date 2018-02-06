@@ -22,7 +22,9 @@
 
         <button @click = "goTo('home')" class = 'btn btn-success pull-right'>Restart</button>
         <button @click = 'showMap()' class = 'btn btn-primary'>Show Map</button>
-        <div v-show = 'toggleMap' id = 'mapDiv' class="balt-theme"></div>
+        <transition name = 'slide-fade'>
+          <div v-show = 'toggleMap' id = 'mapDiv' class="balt-theme"></div>
+        </transition>
       </div>
 
     </div>
@@ -161,6 +163,18 @@ export default {
     z-index: 555;
     bottom: 1%;
     right: 1%;
+  }
+
+  .slide-fade-enter-active {
+  transition: all .3s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .3s;
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+  /* .slide-fade-leave-active below version 2.1.8 */ {
+    transform: translateX(100px);
+    opacity: 0;
   }
 
 </style>

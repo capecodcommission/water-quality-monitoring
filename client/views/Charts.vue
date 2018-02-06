@@ -5,7 +5,7 @@
     </div>
 
     <div class = 'col-md-12'>
-      <div id = 'chartsContainer'>
+      
         <div id = 'allWqMeasurablesChart' class = 'responsive-plot'></div>
         <div id = 'ammoniaChart' class = 'responsive-plot'></div>
         <div id = 'chlorophyllChart' class = 'responsive-plot'></div>
@@ -17,7 +17,7 @@
         <!-- <div id = 'precipitationChart' class = 'responsive-plot'></div> -->
         <div id = 'salinityChart' class = 'responsive-plot'></div>
         <div id = 'waterTemperatureChart' class = 'responsive-plot'></div>
-      </div>
+      
     </div>
   </div>
 
