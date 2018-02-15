@@ -8,6 +8,8 @@ var _ = require('lodash');
 var moment = require('moment')
 window.$ = $
 
+require('offline-plugin/runtime').install();
+
 import {ClientTable} from 'vue-tables-2';
 
 Vue.use(ClientTable);

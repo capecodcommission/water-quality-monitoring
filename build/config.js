@@ -11,5 +11,7 @@ module.exports = {
   },
   // when you use electron please set to relative path like ./
   // otherwise only set to absolute path when you're using history mode
-  publicPath: '/',
+  
+  publicPath: '/' // DO NOT SET TO /wq UNTIL JUST BEFORE BUILDING. RESET TO '/' WHILE DEVELOPING 
+  
 }
