@@ -53,7 +53,7 @@ export default {
 
     return {
 
-      selectedEmbay: 'Select an Embayment',
+      selectedEmbay: this.$route.params.embayName,
       toggleMap: false
     }
   },
@@ -145,10 +145,6 @@ export default {
       this.$store.dispatch('loadEmbayName', x)
 
       this.$store.dispatch('loadStations', x)
-    },
-
-    stationId: function(x) {
-
     }
   }
 }

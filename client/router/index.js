@@ -7,7 +7,7 @@ import Charts from '../views/Charts'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'hash',
+  mode: 'hash', // NOTE: history mode breaks the build
   routes: [
 
     // Default route

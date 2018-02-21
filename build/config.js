@@ -2,7 +2,7 @@
 const pkg = require('../package')
 
 module.exports = {
-  title: 'myproj',
+  title: 'Water Quality Monitoring',
   // Options for webpack-dev-server
   // See https://webpack.js.org/configuration/dev-server
   devServer: {
