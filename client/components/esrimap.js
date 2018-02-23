@@ -76,11 +76,23 @@ export const createMap = function (loader) {
         ]
       };
 
+      // Station point renderer containing icons
+      var stationsRender = {
+        type: "simple", // autocasts as new SimpleRenderer()
+        symbol: {
+          type: "picture-marker", // autocasts as new SimpleMarkerSymbol()
+          url: "https://i.imgur.com/Y4ccq3B.png",
+          width: "30px",
+          height: "30px"
+        }
+      };
+
       // Station featurelayer containing points
       var stations = new FeatureLayer({
         url: "http://gis-services.capecodcommission.org/arcgis/rest/services/wMVP/WaterQualityMonitoringStations/MapServer/0",
         outFields: ['Station','Quality'],
-        popupTemplate: stationTemplate
+        popupTemplate: stationTemplate,
+        renderer: stationsRender
       })
 
       // Add featurelayers to map
@@ -115,7 +127,6 @@ export const createMap = function (loader) {
         }
       })
 
-      
 
       $('#home').hide()
 
@@ -243,11 +254,23 @@ export const createMapTable = function (loader, embaySelect = null, route, store
         ]
       };
 
+      // Station point renderer containing icons
+      var stationsRender = {
+        type: "simple", // autocasts as new SimpleRenderer()
+        symbol: {
+          type: "picture-marker", // autocasts as new SimpleMarkerSymbol()
+          url: "https://i.imgur.com/Y4ccq3B.png",
+          width: "30px",
+          height: "30px"
+        }
+      };
+
       // Station featurelayer containing points
       var stations = new FeatureLayer({
         url: "http://gis-services.capecodcommission.org/arcgis/rest/services/wMVP/WaterQualityMonitoringStations/MapServer/0",
         outFields: ['Station','Quality'],
-        popupTemplate: stationTemplate
+        popupTemplate: stationTemplate,
+        renderer: stationsRender
       })
 
       // Add featurelayers to map
