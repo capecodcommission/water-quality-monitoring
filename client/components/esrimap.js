@@ -296,11 +296,29 @@ export const createMapTable = function (loader, embaySelect = null, route, store
 
           var x = view.popup.viewModel.selectedFeature.attributes.Station;
 
-          route.params.id = x
+          var url = 'http://sql-connect.api.capecodcommission.org/api/getStation/' + x
 
-          store.dispatch('loadStationId', x)
+          $.ajax(
+            {
+              method: 'GET', 
+              url: url
+            }
+          ).done(function(rows) {
 
-          store.dispatch('getStation', x)
+            if (rows.recordset.length > 1) {
+
+              route.params.id = x
+
+              store.dispatch('loadStationId', x)
+
+              store.dispatch('getStation', x)
+
+              // router.push({name: 'table', params: {id: attributes.Station, embayName: attributes.Embayment}})
+            } else {
+
+              $('.esri-popup__content').append("<p id = 'nodata' class = 'text-danger'>No data available</p>")
+            }
+          })
         }
       })
 
