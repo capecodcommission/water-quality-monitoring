@@ -40,7 +40,7 @@
   "dependencies": {
     "babel-runtime": "^6.18.0",
     "bootstrap": "^3.3.7",
-    "esri-loader": "^1.5.3",
+    "esri-loader": "^2.3.0",
     "ify-loader": "^1.1.0",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",

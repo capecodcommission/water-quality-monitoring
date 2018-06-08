@@ -57,6 +57,7 @@ const actions = {
   // Get station data from API, pass data to mutation
   getStation ( {commit}, id ) {
 
+    // WARNING: Cannot update route to use https until api server uses https
     $.getJSON("http://sql-connect.api.capecodcommission.org/api/getStation/" + id, function (result) {
 
       commit("LOAD_STATION", result)
@@ -68,6 +69,7 @@ const actions = {
   // Get embayment names from API, pass data to mutation
   loadEmbaymentNames ({commit}) {
 
+    // WARNING: Cannot update route to use https until api server uses https
     $.getJSON("http://sql-connect.api.capecodcommission.org/api/getEmbayments", function (result) {
 
       commit("LOAD_EMBAYMENTNAMES", result)
@@ -77,6 +79,7 @@ const actions = {
   // Get station names from API based on embayment name, pass data to mutation
   loadStations ({commit}, name) {
 
+    // WARNING: Cannot update route to use https until api server uses https
     $.getJSON("http://sql-connect.api.capecodcommission.org/api/getStations/" + name, function (result) {
 
       commit("LOAD_STATIONS", result)

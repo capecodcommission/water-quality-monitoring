@@ -36,6 +36,7 @@ export default {
 
   data () {
     return {
+
     }
   },
 
@@ -43,7 +44,6 @@ export default {
     wqStation () {
       return this.$store.state.wqStation
     }
-
   },
 
   mounted () {
@@ -536,6 +536,48 @@ export default {
 
       allWqMeasurablesChart.on('plotly_unhover', function(allWqMeasurablesData){
         dragLayerAllWqMeasurables.style.cursor = ''
+      });
+
+      allWqMeasurablesChart.on('plotly_legendclick', function(e) {
+
+        switch (e.expandedIndex) {
+
+          case 0:
+            $('#ammoniaChart').toggle()
+            break;
+          
+          case 1:
+            $('#chlorophyllChart').toggle()
+            break;
+
+          case 2:
+            $('#dissolvedoxygenChart').toggle()
+            break;
+          
+          case 3:
+            $('#nitrateNitriteChart').toggle()
+            break;
+          
+          case 4:
+            $('#nitrogenChart').toggle()
+            break;
+          
+          case 5:
+            $('#orthophosphateChart').toggle()
+            break;
+
+          case 6:
+            $('#phaeophytinChart').toggle()
+            break;
+
+          case 7:
+            $('#salinityChart').toggle()
+            break;
+          
+          case 8:
+            $('#waterTemperatureChart').toggle()
+            break;
+        }
       });
 
       ammoniaChart.on('plotly_hover', function(ammoniumData){

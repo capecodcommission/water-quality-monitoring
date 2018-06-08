@@ -9,7 +9,7 @@
     </div>
 
     <div class = 'row'>
-      
+
       <clientTable></clientTable>
 
     </div>
@@ -20,9 +20,9 @@
 
 <script>
 import * as esriLoader from 'esri-loader'
-import { createMapTable } from '../components/esrimap'
 import wqHeader from '../components/Header'
 import clientTable from '../components/clientTable'
+import router from '../router'
 
 export default {
 
@@ -55,8 +55,6 @@ export default {
     // Load station data using station id from route
     this.$store.dispatch('loadEmbaymentNames')
     this.$store.dispatch('loadEmbayName', this.$route.params.embayName)
-
-    esriLoader.bootstrap((err) => { createMapTable(esriLoader, $('#embaymentSelect').val(), this.$route, this.$store)}, { url: 'https://js.arcgis.com/4.6/'})
   },
 
   watch: {
@@ -77,5 +75,5 @@ export default {
 
 <style lang = 'scss'>
 
-	
+
 </style>

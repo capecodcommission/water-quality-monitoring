@@ -1,62 +1,29 @@
 <template>
 
   <div class="row">
-
-    <div id = 'viewDiv' class="balt-theme">
-
-      <SideBar></SideBar>
-      
-    </div>
-
+    <MapHome></MapHome>
+    <SideBar></SideBar>
   </div>
 
 </template>
 
 <script>
-import * as esriLoader from 'esri-loader'
-import { createMap } from '../components/esrimap'
 import SideBar from '../components/SideBar'
+import MapHome from '../components/MapHome'
+import router from '../router'
 
 export default {
   components: {
-    SideBar
+    SideBar,
+    MapHome
   },
 
   mounted() {
-
-    // Run Create map script on page load
-    esriLoader.bootstrap((err) => { createMap(esriLoader)}, { url: 'https://js.arcgis.com/4.6/'})
+    
   }
 }
 </script>
 
 <style lang = 'scss'>
-
-  .esri-ui-bottom-left {
-    bottom: 15% !important;
-  }
-
-  .esri-legend {
-    background: #28536c;
-    color: #f0ead6;
-    border-radius: 25px;
-    border: 5px solid grey;
-  }
-
-  #viewDiv {
-    position: fixed !important;
-    height: 100%;
-    width: 100%;
-  }
-
-  .esri-popup__button {
-
-    font-size: 18px !important
-  }
-
-  .esri-popup__action-text {
-
-    overflow: visible !important
-  }
 
 </style>

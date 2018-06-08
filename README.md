@@ -4,7 +4,7 @@
 
 # Current Development
 
-> mario-working branch: Adding verbose comments to existing components
+> esri-loader-upgrade: Upgrading and rewriting esri-loader logic 
 
 > shawn-working branch: Added code to make the plotly plots responsive.  With the code, also added the 2 resources referenced for the responsive code.
 > Ready for review

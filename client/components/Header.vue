@@ -7,15 +7,15 @@
       <div class = 'col-md-4'>
 
         <select v-model = 'selectedEmbay' id = 'embaymentSelect' class = 'pull-left btn btn-primary dropdown-toggle'>
-          
+
           <option>Select an Embayment</option>
-          <option v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
+          <option :key = "name.EMBAYMENT" v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
         </select>
       </div>
 
       <div style = 'overflow: auto; white-space: nowrap;' class = 'col-md-4 text-center'>
 
-        <button style = 'display: inline-block;' v-for = 'name in stationNames' @click = "loadStation(name.Uid)" :class = "[name.Uid === stationId ? 'btn btn-group btn-primary text-center' : '', 'btn btn-group btn-secondary text-center']">{{name.Uid}}</button>
+        <button :key = "name.Uid" style = 'display: inline-block;' v-for = 'name in stationNames' @click = "loadStation(name.Uid)" :class = "[name.Uid === stationId ? 'btn btn-group btn-primary text-center' : '', 'btn btn-group btn-secondary text-center']">{{name.Uid}}</button>
       </div>
 
       <div class = 'col-md-4'>
@@ -23,7 +23,7 @@
         <button @click = "goTo('home')" class = 'btn btn-success pull-right'>Restart</button>
         <button @click = 'showMap()' class = 'btn btn-primary'>Show Map</button>
         <transition name = 'slide-fade'>
-          <div v-show = 'toggleMap' id = 'mapDiv' class="balt-theme"></div>
+          <MapTable v-show = 'toggleMap'></MapTable>
         </transition>
       </div>
 
@@ -46,6 +46,7 @@
 
 <script>
 import router from '../router'
+import MapTable from '../components/MapTable'
 
 export default {
 
@@ -85,6 +86,7 @@ export default {
 
   components: {
 
+    MapTable
   },
 
   mounted() {
@@ -116,7 +118,7 @@ export default {
 
     downloadExcel() {
 
-      window.location.href = 'http://2014.watershedmvp.org/waterqualitymonitoring/Content/Files/BlankTemplate.xlsx'
+      window.location.href = 'https://2014.watershedmvp.org/waterqualitymonitoring/Content/Files/BlankTemplate.xlsx'
     },
 
     // Navigate to a particular page, passing the station id if necessary
@@ -151,15 +153,6 @@ export default {
 </script>
 
 <style lang = 'scss'>
-
-  #mapDiv {
-    position: fixed;
-    height: 50%;
-    width: 25%;
-    z-index: 555;
-    bottom: 1%;
-    right: 1%;
-  }
 
   .slide-fade-enter-active {
     transition: all .3s ease;
