@@ -2,6 +2,7 @@
 
   <div class = 'selectEmbayment text-center'>
 
+    <!-- WARNING: Cannot update route to use https until routed server uses https -->
     <img src="http://www.capecodcommission.org/gfx/home-logo.jpg" class = 'img-rounded'><br><br>
 
     <h5>
@@ -18,7 +19,7 @@
     <select id = 'embaySelect'>
 
       <option :value = '0'>Select an Embayment</option>
-      <option v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
+      <option :key = 'name.EMBAYMENT' v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
     </select><br>
 
     <button id = 'home' style = 'margin-top: 5% !important'  class = 'btn btn-primary'>Home</button>
@@ -67,7 +68,7 @@ export default {
 
     downloadExcel() {
 
-      window.location.href = 'http://2014.watershedmvp.org/waterqualitymonitoring/Content/Files/BlankTemplate.xlsx'
+      window.location.href = 'https://2014.watershedmvp.org/waterqualitymonitoring/Content/Files/BlankTemplate.xlsx'
     }
   }
 }

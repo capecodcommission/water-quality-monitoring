@@ -9,13 +9,13 @@
         <select v-model = 'selectedEmbay' id = 'embaymentSelect' class = 'pull-left btn btn-primary dropdown-toggle'>
           
           <option>Select an Embayment</option>
-          <option v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
+          <option :key = "name.EMBAYMENT" v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
         </select>
       </div>
 
       <div style = 'overflow: auto; white-space: nowrap;' class = 'col-md-4 text-center'>
 
-        <button style = 'display: inline-block;' v-for = 'name in stationNames' @click = "loadStation(name.Uid)" :class = "[name.Uid === stationId ? 'btn btn-group btn-primary text-center' : '', 'btn btn-group btn-secondary text-center']">{{name.Uid}}</button>
+        <button :key = "name.Uid" style = 'display: inline-block;' v-for = 'name in stationNames' @click = "loadStation(name.Uid)" :class = "[name.Uid === stationId ? 'btn btn-group btn-primary text-center' : '', 'btn btn-group btn-secondary text-center']">{{name.Uid}}</button>
       </div>
 
       <div class = 'col-md-4'>
@@ -116,7 +116,7 @@ export default {
 
     downloadExcel() {
 
-      window.location.href = 'http://2014.watershedmvp.org/waterqualitymonitoring/Content/Files/BlankTemplate.xlsx'
+      window.location.href = 'https://2014.watershedmvp.org/waterqualitymonitoring/Content/Files/BlankTemplate.xlsx'
     },
 
     // Navigate to a particular page, passing the station id if necessary
