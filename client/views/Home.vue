@@ -2,11 +2,7 @@
 
   <div class="row">
 
-    <div id = 'viewDiv' class="balt-theme">
-
-      <!-- <SideBar></SideBar> -->
-      
-    </div>
+    <div id = 'viewDiv' class="balt-theme"></div>
     <SideBar></SideBar>
 
   </div>
@@ -26,9 +22,7 @@ export default {
 
   mounted() {
 
-    // Run Create map script on page load
-    // esriLoader.bootstrap((err) => { createMap(esriLoader)}, { url: 'https://js.arcgis.com/4.6/'})
-
+    // Handle esri-modules and map logic via promise
     esriLoader.loadModules(
       [
         "esri/Map",
