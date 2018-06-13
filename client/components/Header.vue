@@ -7,7 +7,7 @@
       <div class = 'col-md-4'>
 
         <select v-model = 'selectedEmbay' id = 'embaymentSelect' class = 'pull-left btn btn-primary dropdown-toggle'>
-          
+
           <option>Select an Embayment</option>
           <option :key = "name.EMBAYMENT" v-for = 'name in embaymentNames' :value = 'name.EMBAYMENT'>{{name.EMBAYMENT}}</option>
         </select>
@@ -23,7 +23,7 @@
         <button @click = "goTo('home')" class = 'btn btn-success pull-right'>Restart</button>
         <button @click = 'showMap()' class = 'btn btn-primary'>Show Map</button>
         <transition name = 'slide-fade'>
-          <div v-show = 'toggleMap' id = 'mapDiv' class="balt-theme"></div>
+          <MapTable v-show = 'toggleMap'></MapTable>
         </transition>
       </div>
 
@@ -46,6 +46,7 @@
 
 <script>
 import router from '../router'
+import MapTable from '../components/MapTable'
 
 export default {
 
@@ -85,6 +86,7 @@ export default {
 
   components: {
 
+    MapTable
   },
 
   mounted() {
@@ -152,14 +154,14 @@ export default {
 
 <style lang = 'scss'>
 
-  #mapDiv {
+  /* #mapDiv {
     position: fixed;
     height: 50%;
     width: 25%;
     z-index: 555;
     bottom: 1%;
     right: 1%;
-  }
+  } */
 
   .slide-fade-enter-active {
     transition: all .3s ease;
