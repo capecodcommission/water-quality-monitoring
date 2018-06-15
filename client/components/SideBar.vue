@@ -30,7 +30,6 @@
 
 <script>
 import * as esriLoader from 'esri-loader'
-import { createMap } from '../components/esrimap'
 
 export default {
 

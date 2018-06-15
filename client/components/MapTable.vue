@@ -53,7 +53,15 @@ export default {
           container: "mapDiv",  // Reference to the DOM node that will contain the view
           map: map,
           zoom: 11,
-          center: [-70.303634, 41.701660]
+          center: [-70.303634, 41.701660],
+          popup: {
+            dockEnabled: true,
+            dockOptions: {
+              buttonEnabled: false,
+              breakpoint: false,
+              position: "bottom-center"
+            }
+          }
         });
 
         // Embayment featurelayer containing polygons
@@ -194,16 +202,15 @@ export default {
 
 <style lang = 'scss'>
 
-  .esri-ui-bottom-left {
-    bottom: 15% !important;
+  .esri-ui .esri-component {
+
+    pointer-events: none;
   }
 
-  /* .esri-legend {
-    background: #28536c;
-    color: #f0ead6;
-    border-radius: 25px;
-    border: 5px solid grey;
-  } */
+  .esri-ui-bottom-left {
+
+    bottom: 15% !important;
+  }
 
   #mapDiv {
     position: fixed;

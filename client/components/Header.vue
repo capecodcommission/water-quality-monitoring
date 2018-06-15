@@ -154,15 +154,6 @@ export default {
 
 <style lang = 'scss'>
 
-  /* #mapDiv {
-    position: fixed;
-    height: 50%;
-    width: 25%;
-    z-index: 555;
-    bottom: 1%;
-    right: 1%;
-  } */
-
   .slide-fade-enter-active {
     transition: all .3s ease;
   }
