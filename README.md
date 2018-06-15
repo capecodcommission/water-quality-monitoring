@@ -2,12 +2,11 @@
 
 > This tool allows users to visualize Cape Cod Embayment water quality over time
 
-# Current Development
+# Future Development
 
-> esri-loader-upgrade: Upgrading and rewriting esri-loader logic 
-
-> shawn-working branch: Added code to make the plotly plots responsive.  With the code, also added the 2 resources referenced for the responsive code.
-> Ready for review
+> 1. Port code into updated template from vue templates list.
+> 2. Debug routing issue where functions aren't passing in correct web address from 'Nutrient Table' & 'Nutrient Charts' buttons.
+> 3. Fix popup implementation (docking & positioning) on inset & main map.
 
 ## Modules
 
